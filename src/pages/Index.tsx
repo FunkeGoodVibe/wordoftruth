@@ -86,7 +86,7 @@ const Index = () => {
       <header className="relative z-10 flex items-center justify-between px-6 sm:px-12 py-6">
         <div className="flex items-center gap-2 font-display text-lg">
           <Sparkles className="h-4 w-4 text-primary" strokeWidth={1.8} />
-          <span className="tracking-tight">Stillpoint</span>
+          <span className="tracking-tight">Word of Truth</span>
         </div>
         <p className="hidden sm:block text-xs uppercase tracking-[0.35em] text-muted-foreground">
           {today}
