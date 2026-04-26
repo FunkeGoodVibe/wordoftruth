@@ -7,9 +7,10 @@ type Props = {
   revealed: boolean;
   affirmation: Affirmation | null;
   onClick: () => void;
+  name?: string;
 };
 
-const AffirmationCard = ({ revealed, affirmation, onClick }: Props) => {
+const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
   return (
     <div className="perspective relative">
       {/* Ambient glow */}
@@ -91,14 +92,14 @@ const AffirmationCard = ({ revealed, affirmation, onClick }: Props) => {
               <AnimatePresence mode="wait">
                 {affirmation && (
                   <motion.p
-                    key={affirmation.text}
+                    key={affirmation.text + (name ?? "")}
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ delay: 0.6, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     className="font-display text-3xl sm:text-[2rem] leading-tight text-center text-balance gradient-text"
                   >
-                    “{affirmation.text}”
+                    {name ? `“${name}, ${affirmation.text.charAt(0).toLowerCase()}${affirmation.text.slice(1)}”` : `“${affirmation.text}”`}
                   </motion.p>
                 )}
               </AnimatePresence>

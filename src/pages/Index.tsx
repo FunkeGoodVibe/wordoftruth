@@ -148,6 +148,7 @@ const Index = () => {
           revealed={revealed}
           affirmation={current}
           onClick={handleDraw}
+          name={name}
         />
 
         {/* Controls */}
