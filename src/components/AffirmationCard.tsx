@@ -119,6 +119,9 @@ const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
                     <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground pt-1">
                       — {affirmation.reference}
                     </p>
+                    <p className="font-display italic text-base text-muted-foreground pt-2">
+                      Love from your Father
+                    </p>
                   </motion.div>
                 )}
               </AnimatePresence>
