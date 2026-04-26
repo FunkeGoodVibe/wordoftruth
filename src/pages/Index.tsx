@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 import { Shuffle, Sparkles } from "lucide-react";
 import AffirmationCard from "@/components/AffirmationCard";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { affirmations, type Affirmation } from "@/data/affirmations";
+
+const NAME_STORAGE_KEY = "stillpoint:name";
 
 const drawRandom = (exclude?: Affirmation | null): Affirmation => {
   const pool = exclude ? affirmations.filter((a) => a.text !== exclude.text) : affirmations;
