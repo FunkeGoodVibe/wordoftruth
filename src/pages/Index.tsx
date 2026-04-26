@@ -105,12 +105,43 @@ const Index = () => {
             A daily ritual
           </p>
           <h1 className="font-display text-5xl sm:text-7xl leading-[1.05] text-balance">
-            One card. <span className="italic gradient-text">One breath.</span>
-            <br className="hidden sm:block" /> One small truth.
+            {name ? (
+              <>
+                Hello, <span className="italic gradient-text">{name}</span>.
+                <br className="hidden sm:block" /> One card. One breath.
+              </>
+            ) : (
+              <>
+                One card. <span className="italic gradient-text">One breath.</span>
+                <br className="hidden sm:block" /> One small truth.
+              </>
+            )}
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground max-w-md mx-auto leading-relaxed">
             Draw a card whenever you need a quiet word from yourself. It will be waiting.
           </p>
+
+          <form
+            onSubmit={handleNameSubmit}
+            className="flex items-center gap-2 max-w-sm mx-auto pt-2"
+          >
+            <Input
+              type="text"
+              value={nameInput}
+              onChange={(e) => setNameInput(e.target.value)}
+              placeholder={name ? "Change your name" : "What shall we call you?"}
+              aria-label="Your name"
+              maxLength={40}
+              className="rounded-full bg-background/60 backdrop-blur border-primary/20 h-11 px-5 text-center sm:text-left"
+            />
+            <Button
+              type="submit"
+              variant="ghost"
+              className="rounded-full h-11 px-5 hover:bg-primary/10"
+            >
+              {name ? "Update" : "Save"}
+            </Button>
+          </form>
         </motion.div>
 
         <AffirmationCard
