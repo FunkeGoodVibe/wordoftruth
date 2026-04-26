@@ -87,20 +87,30 @@ const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
               )}
             </AnimatePresence>
 
-            {/* The affirmation */}
-            <div className="flex-1 flex items-center justify-center px-2">
+            {/* The promise */}
+            <div className="flex-1 flex flex-col items-center justify-center px-2 gap-4">
               <AnimatePresence mode="wait">
                 {affirmation && (
-                  <motion.p
+                  <motion.div
                     key={affirmation.text + (name ?? "")}
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ delay: 0.6, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="font-display text-3xl sm:text-[2rem] leading-tight text-center text-balance gradient-text"
+                    className="space-y-3 text-center"
                   >
-                    {name ? `“${name}, ${affirmation.text.charAt(0).toLowerCase()}${affirmation.text.slice(1)}”` : `“${affirmation.text}”`}
-                  </motion.p>
+                    {name && (
+                      <p className="font-display italic text-base text-muted-foreground">
+                        Dear {name},
+                      </p>
+                    )}
+                    <p className="font-display text-2xl sm:text-[1.65rem] leading-snug text-balance gradient-text">
+                      “{affirmation.text}”
+                    </p>
+                    <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground pt-1">
+                      — {affirmation.reference}
+                    </p>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </div>
@@ -117,7 +127,7 @@ const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
                 >
                   <Sparkles className="h-4 w-4 text-primary/70" strokeWidth={1.5} />
                   <p className="text-xs tracking-widest uppercase text-muted-foreground">
-                    breathe it in
+                    a promise for you
                   </p>
                 </motion.div>
               )}
