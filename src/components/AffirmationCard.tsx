@@ -101,7 +101,7 @@ const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
                   >
                     {name && (
                       <p className="font-display italic text-base text-muted-foreground">
-                        Dear {name},
+                        Dear <span className="gradient-text not-italic">{name}</span>,
                       </p>
                     )}
                     <p className="font-display text-2xl sm:text-[1.65rem] leading-snug text-balance gradient-text">
