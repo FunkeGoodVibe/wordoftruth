@@ -7,9 +7,10 @@ type Props = {
   revealed: boolean;
   affirmation: Affirmation | null;
   onClick: () => void;
+  name?: string;
 };
 
-const AffirmationCard = ({ revealed, affirmation, onClick }: Props) => {
+const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
   return (
     <div className="perspective relative">
       {/* Ambient glow */}
