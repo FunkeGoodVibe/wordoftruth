@@ -2,6 +2,9 @@ import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Shuffle, Sparkles } from "lucide-react";
 import AffirmationCard from "@/components/AffirmationCard";
+import ImpactSection from "@/components/ImpactSection";
+import WhySection from "@/components/WhySection";
+import PurchaseSection from "@/components/PurchaseSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { affirmations, type Affirmation } from "@/data/affirmations";
@@ -192,6 +195,10 @@ const Index = () => {
           )}
         </div>
       </section>
+
+      <ImpactSection />
+      <WhySection />
+      <PurchaseSection />
 
       {/* Footer */}
       <footer className="relative z-10 px-6 pb-10 text-center">
