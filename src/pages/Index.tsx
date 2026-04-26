@@ -17,6 +17,27 @@ const Index = () => {
   const [revealed, setRevealed] = useState(false);
   const [current, setCurrent] = useState<Affirmation | null>(null);
   const [drawCount, setDrawCount] = useState(0);
+  const [name, setName] = useState("");
+  const [nameInput, setNameInput] = useState("");
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem(NAME_STORAGE_KEY);
+    if (saved) {
+      setName(saved);
+      setNameInput(saved);
+    }
+  }, []);
+
+  const handleNameSubmit = useCallback((e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = nameInput.trim().slice(0, 40);
+    setName(trimmed);
+    if (trimmed) {
+      window.localStorage.setItem(NAME_STORAGE_KEY, trimmed);
+    } else {
+      window.localStorage.removeItem(NAME_STORAGE_KEY);
+    }
+  }, [nameInput]);
 
   const handleDraw = useCallback(() => {
     if (!revealed) {
