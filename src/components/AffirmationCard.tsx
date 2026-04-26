@@ -101,7 +101,16 @@ const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
                   >
                     {name && (
                       <p className="font-display italic text-base text-muted-foreground">
-                        Dear <span className="gradient-text not-italic">{name}</span>,
+                        Dear{" "}
+                        <motion.span
+                          initial={{ opacity: 0, scale: 0.6, y: 6 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          transition={{ delay: 0.85, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                          className="inline-block gradient-text not-italic font-display text-2xl sm:text-3xl animate-pulse-glow"
+                        >
+                          {name}
+                        </motion.span>
+                        ,
                       </p>
                     )}
                     <p className="font-display text-2xl sm:text-[1.65rem] leading-snug text-balance gradient-text">
