@@ -5,6 +5,7 @@ import AffirmationCard from "@/components/AffirmationCard";
 import ImpactSection from "@/components/ImpactSection";
 import PromisesLibrary from "@/components/PromisesLibrary";
 import PurchaseSection from "@/components/PurchaseSection";
+import ContactSection from "@/components/ContactSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { affirmations, type Affirmation } from "@/data/affirmations";
@@ -199,6 +200,7 @@ const Index = () => {
       <ImpactSection />
       <PromisesLibrary />
       <PurchaseSection />
+      <ContactSection />
 
       {/* Footer */}
       <footer className="relative z-10 px-6 pb-10 text-center">
