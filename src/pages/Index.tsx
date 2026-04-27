@@ -6,6 +6,7 @@ import ImpactSection from "@/components/ImpactSection";
 import PromisesLibrary from "@/components/PromisesLibrary";
 import PurchaseSection from "@/components/PurchaseSection";
 import ContactSection from "@/components/ContactSection";
+import FaqSection from "@/components/FaqSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { affirmations, type Affirmation } from "@/data/affirmations";
