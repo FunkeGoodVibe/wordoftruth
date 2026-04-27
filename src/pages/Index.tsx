@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Shuffle, Sparkles } from "lucide-react";
 import AffirmationCard from "@/components/AffirmationCard";
 import ImpactSection from "@/components/ImpactSection";
+import PromisesLibrary from "@/components/PromisesLibrary";
 import WhySection from "@/components/WhySection";
 import PurchaseSection from "@/components/PurchaseSection";
 import { Button } from "@/components/ui/button";
@@ -197,6 +198,7 @@ const Index = () => {
       </section>
 
       <ImpactSection />
+      <PromisesLibrary />
       <WhySection />
       <PurchaseSection />
 
