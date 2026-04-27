@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const stats = [
   { value: "2,400+", label: "Happy Customers", sub: "Loved by thousands worldwide" },
-  { value: "52", label: "Unique Cards", sub: "Thoughtfully written affirmations" },
+  { value: "365", label: "Promises", sub: "Thoughtfully written promises" },
   { value: "4.9★", label: "Average Rating", sub: "Across all customer reviews" },
   { value: "100%", label: "Handcrafted", sub: "Premium linen-textured cardstock" },
 ];
