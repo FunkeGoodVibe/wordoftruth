@@ -17,7 +17,7 @@ const ImpactSection = () => {
           Built with <span className="italic gradient-text">Love</span>, Shared with Purpose
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -25,15 +25,31 @@ const ImpactSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col items-center"
+              whileHover={{ y: -6 }}
+              className="group relative flex flex-col items-center rounded-3xl bg-card/70 backdrop-blur-md border border-border/60 px-6 py-10 shadow-soft transition-all duration-500 hover:shadow-[var(--shadow-glow)] hover:border-primary/40 cursor-default overflow-hidden"
             >
-              <div className="font-display text-4xl sm:text-5xl gradient-text mb-2">
+              {/* Soft glow on hover */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: "var(--gradient-glow)" }}
+              />
+
+              <div className="relative font-display text-5xl sm:text-6xl gradient-text mb-3 transition-transform duration-500 group-hover:scale-110">
                 {stat.value}
               </div>
-              <div className="text-sm font-medium tracking-wide mb-1">{stat.label}</div>
-              <div className="text-xs text-muted-foreground leading-relaxed max-w-[14ch]">
+              <div className="relative text-sm font-medium tracking-wide mb-1">
+                {stat.label}
+              </div>
+              <div className="relative text-xs text-muted-foreground leading-relaxed max-w-[18ch] text-center">
                 {stat.sub}
               </div>
+
+              {/* Subtle bottom accent line */}
+              <div
+                aria-hidden
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gradient-to-r from-transparent via-primary/60 to-transparent group-hover:w-2/3 transition-all duration-700"
+              />
             </motion.div>
           ))}
         </div>
