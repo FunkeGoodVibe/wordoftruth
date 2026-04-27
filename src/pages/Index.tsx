@@ -199,7 +199,6 @@ const Index = () => {
 
       <ImpactSection />
       <PromisesLibrary />
-      <WhySection />
       <PurchaseSection />
 
       {/* Footer */}
