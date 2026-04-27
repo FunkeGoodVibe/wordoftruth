@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "2,400+", label: "Happy Customers", sub: "Loved by thousands worldwide" },
+  { value: "2026", label: "Established", sub: "Born from quiet intention" },
   { value: "365", label: "Promises", sub: "Thoughtfully written promises" },
-  { value: "4.9★", label: "Average Rating", sub: "Across all customer reviews" },
   { value: "100%", label: "Handcrafted", sub: "Premium linen-textured cardstock" },
 ];
 
