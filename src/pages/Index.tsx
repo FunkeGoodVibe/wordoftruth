@@ -197,10 +197,10 @@ const Index = () => {
         </div>
       </section>
 
-      <ImpactSection />
       <PromisesLibrary />
       <PurchaseSection />
       <ContactSection />
+      <ImpactSection />
 
       {/* Footer */}
       <footer className="relative z-10 px-6 pb-10 text-center">
