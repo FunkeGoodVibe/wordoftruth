@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "2,400+", label: "Happy Customers", sub: "Loved by thousands worldwide" },
+  { value: "2026", label: "Established", sub: "Born from quiet intention" },
   { value: "365", label: "Promises", sub: "Thoughtfully written promises" },
-  { value: "4.9★", label: "Average Rating", sub: "Across all customer reviews" },
   { value: "100%", label: "Handcrafted", sub: "Premium linen-textured cardstock" },
 ];
 
@@ -18,7 +17,7 @@ const ImpactSection = () => {
           Built with <span className="italic gradient-text">Love</span>, Shared with Purpose
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-6">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
