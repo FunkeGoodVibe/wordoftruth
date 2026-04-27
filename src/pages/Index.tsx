@@ -4,7 +4,6 @@ import { Shuffle, Sparkles } from "lucide-react";
 import AffirmationCard from "@/components/AffirmationCard";
 import ImpactSection from "@/components/ImpactSection";
 import PromisesLibrary from "@/components/PromisesLibrary";
-import WhySection from "@/components/WhySection";
 import PurchaseSection from "@/components/PurchaseSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
