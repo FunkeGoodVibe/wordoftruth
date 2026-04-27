@@ -30,7 +30,7 @@ const PurchaseSection = () => {
             Begin Your <span className="italic gradient-text">Practice</span>
           </h2>
           <p className="relative text-base text-muted-foreground max-w-md mx-auto leading-relaxed mb-8">
-            52 affirmation cards + a guidebook for daily rituals, packaged in a beautiful keepsake box.
+            365 promise cards + a guidebook for daily rituals, packaged in a beautiful keepsake box.
           </p>
 
           <div className="relative flex flex-col items-center gap-1 mb-8">
