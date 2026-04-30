@@ -14,7 +14,11 @@ const THEMES: Array<Affirmation["theme"] | "all"> = [
   "provision",
 ];
 
-const PromisesLibrary = () => {
+interface PromisesLibraryProps {
+  name?: string;
+}
+
+const PromisesLibrary = ({ name }: PromisesLibraryProps) => {
   const [activeTheme, setActiveTheme] = useState<Affirmation["theme"] | "all">("all");
   const [page, setPage] = useState(0);
 
@@ -45,17 +49,27 @@ const PromisesLibrary = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
           <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">
-            The full collection
+            {name ? `Curated for ${name}` : "The full collection"}
           </p>
           <h2
             id="promises-library-title"
             className="font-display text-4xl sm:text-5xl leading-tight text-balance"
           >
-            Browse all <span className="italic gradient-text">365 promises</span>
+            {name ? (
+              <>
+                <span className="italic gradient-text">{name}</span>, browse all{" "}
+                <span className="italic gradient-text">365 promises</span>
+              </>
+            ) : (
+              <>
+                Browse all <span className="italic gradient-text">365 promises</span>
+              </>
+            )}
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Wander through the library at your own pace. Filter by theme, turn the pages,
-            and let the right word find you.
+            {name
+              ? `Wander through the library at your own pace, ${name}. Filter by theme, turn the pages, and let the right word find you.`
+              : "Wander through the library at your own pace. Filter by theme, turn the pages, and let the right word find you."}
           </p>
         </div>
 

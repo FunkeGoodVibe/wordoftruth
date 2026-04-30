@@ -250,7 +250,7 @@ const Index = () => {
       </section>
 
       <ImpactSection name={name} />
-      <PromisesLibrary />
+      <PromisesLibrary name={name} />
       <ParablesSection name={name} />
       <AppDownloadSection />
       <ContactSection />
