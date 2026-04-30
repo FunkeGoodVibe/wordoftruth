@@ -5,6 +5,7 @@ import AffirmationCard from "@/components/AffirmationCard";
 import ImpactSection from "@/components/ImpactSection";
 import PromisesLibrary from "@/components/PromisesLibrary";
 import AppDownloadSection from "@/components/AppDownloadSection";
+import DonateSection from "@/components/DonateSection";
 import ContactSection from "@/components/ContactSection";
 import FaqSection from "@/components/FaqSection";
 import ParablesSection from "@/components/ParablesSection";
@@ -253,6 +254,7 @@ const Index = () => {
       <PromisesLibrary name={name} />
       <ParablesSection name={name} />
       <AppDownloadSection />
+      <DonateSection />
       <ContactSection />
       <FaqSection />
 
