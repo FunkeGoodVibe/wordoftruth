@@ -127,27 +127,77 @@ const Index = () => {
             Draw a card whenever you need a quiet word from yourself. It will be waiting.
           </p>
 
-          <form
-            onSubmit={handleNameSubmit}
-            className="flex items-center gap-2 max-w-sm mx-auto pt-2"
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative max-w-sm mx-auto pt-2"
           >
-            <Input
-              type="text"
-              value={nameInput}
-              onChange={(e) => setNameInput(e.target.value)}
-              placeholder={name ? "Change your name" : "What shall we call you?"}
-              aria-label="Your name"
-              maxLength={40}
-              className="rounded-full bg-background/60 backdrop-blur border-primary/20 h-11 px-5 text-center sm:text-left"
-            />
-            <Button
-              type="submit"
-              variant="ghost"
-              className="rounded-full h-11 px-5 hover:bg-primary/10"
+            {!name && (
+              <>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1, duration: 0.6 }}
+                  className="text-[11px] uppercase tracking-[0.3em] text-primary/70 mb-2 text-center"
+                >
+                  ✨ Personalise your card
+                </motion.p>
+                <motion.div
+                  aria-hidden
+                  className="absolute -inset-1 rounded-full bg-primary/20 blur-xl pointer-events-none"
+                  animate={{ opacity: [0.25, 0.55, 0.25], scale: [0.98, 1.02, 0.98] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </>
+            )}
+            <motion.form
+              onSubmit={handleNameSubmit}
+              className="relative flex items-center gap-2"
+              animate={
+                name
+                  ? {}
+                  : { y: [0, -3, 0] }
+              }
+              transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
             >
-              {name ? "Update" : "Save"}
-            </Button>
-          </form>
+              <Input
+                type="text"
+                value={nameInput}
+                onChange={(e) => setNameInput(e.target.value)}
+                placeholder={name ? "Change your name" : "What shall we call you?"}
+                aria-label="Your name"
+                maxLength={40}
+                className="rounded-full bg-background/80 backdrop-blur border-primary/30 h-11 px-5 text-center sm:text-left focus-visible:ring-primary/40 focus-visible:border-primary/60 transition-all"
+              />
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                animate={
+                  name
+                    ? {}
+                    : {
+                        boxShadow: [
+                          "0 0 0 0 hsl(var(--primary) / 0)",
+                          "0 0 0 8px hsl(var(--primary) / 0.15)",
+                          "0 0 0 0 hsl(var(--primary) / 0)",
+                        ],
+                      }
+                }
+                transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+                className="rounded-full"
+              >
+                <Button
+                  type="submit"
+                  variant={name ? "ghost" : "default"}
+                  className="rounded-full h-11 px-5"
+                >
+                  {name ? "Update" : "Save"}
+                </Button>
+              </motion.div>
+            </motion.form>
+          </motion.div>
+
         </motion.div>
 
         <AffirmationCard
