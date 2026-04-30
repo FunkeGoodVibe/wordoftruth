@@ -18,7 +18,7 @@ const ImpactSection = () => {
           Built with <span className="italic gradient-text">Love</span>, Shared with Purpose
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
