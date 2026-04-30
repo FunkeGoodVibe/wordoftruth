@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactSchema = z.object({
   name: z
@@ -44,13 +45,34 @@ const ContactSection = () => {
 
     setSubmitting(true);
     try {
-      // Simulated send — wire up to a backend when ready
-      await new Promise((r) => setTimeout(r, 700));
+      const id = crypto.randomUUID();
+      const { error } = await supabase.functions.invoke(
+        "send-transactional-email",
+        {
+          body: {
+            templateName: "contact-form-notification",
+            idempotencyKey: `contact-${id}`,
+            templateData: {
+              name: result.data.name,
+              email: result.data.email,
+              message: result.data.message,
+            },
+          },
+        },
+      );
+      if (error) throw error;
       toast({
         title: "Message received",
         description: "Thank you for reaching out — we'll be in touch soon.",
       });
       setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      toast({
+        title: "Couldn't send your message",
+        description:
+          err instanceof Error ? err.message : "Please try again in a moment.",
+        variant: "destructive",
+      });
     } finally {
       setSubmitting(false);
     }
