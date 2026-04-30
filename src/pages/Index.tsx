@@ -4,7 +4,7 @@ import { Shuffle, Sparkles } from "lucide-react";
 import AffirmationCard from "@/components/AffirmationCard";
 import ImpactSection from "@/components/ImpactSection";
 import PromisesLibrary from "@/components/PromisesLibrary";
-import PurchaseSection from "@/components/PurchaseSection";
+import AppDownloadSection from "@/components/AppDownloadSection";
 import ContactSection from "@/components/ContactSection";
 import FaqSection from "@/components/FaqSection";
 import { Button } from "@/components/ui/button";
@@ -199,9 +199,9 @@ const Index = () => {
       </section>
 
       <PromisesLibrary />
-      <PurchaseSection />
-      <ContactSection />
       <ImpactSection />
+      <AppDownloadSection />
+      <ContactSection />
       <FaqSection />
 
       {/* Footer */}
