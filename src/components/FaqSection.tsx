@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "How much does it cost?",
-    a: "It costs a voluntary donation of £5 to download the app from the App Store. All contributions will be donated to a good cause.",
+    a: "It costs a voluntary donation of £10 to download the app from the App Store. All contributions will be donated to a good cause.",
   },
 ];
 
