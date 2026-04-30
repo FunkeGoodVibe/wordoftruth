@@ -19,7 +19,7 @@ const ParablesSection = ({ name }: ParablesSectionProps) => {
     () =>
       parables.map((p) => ({
         ...p,
-        story: p.story.replaceAll("{name}", protagonist),
+        story: p.story.split("{name}").join(protagonist),
       })),
     [protagonist],
   );
