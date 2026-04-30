@@ -1,13 +1,37 @@
+import { useMemo } from "react";
 import { motion } from "framer-motion";
+import { parables } from "@/data/parables";
 
-const stats = [
-  { value: "2026", label: "Established", sub: "Born from quiet intention" },
-  { value: "365", label: "Promises", sub: "Thoughtfully written promises" },
-  { value: "38", label: "Personalised Parables", sub: "You as the good and faithful one" },
-  { value: "📱", label: "Available Now", sub: "On the App Store and Google Play" },
-];
+type Stat = {
+  value: string;
+  label: string;
+  sub: string;
+  teaser?: string;
+};
 
-const ImpactSection = () => {
+interface ImpactSectionProps {
+  name?: string;
+}
+
+const ImpactSection = ({ name }: ImpactSectionProps) => {
+  const teaser = useMemo(() => {
+    const protagonist = name?.trim() || "you";
+    const p = parables[Math.floor(Math.random() * parables.length)];
+    // Take the first sentence for a short teaser.
+    const firstSentence = p.story.split(/(?<=[.!?])\s/)[0];
+    return {
+      title: p.title,
+      text: firstSentence.split("{name}").join(protagonist),
+    };
+  }, [name]);
+
+  const stats: Stat[] = [
+    { value: "2026", label: "Established", sub: "Born from quiet intention" },
+    { value: "365", label: "Promises", sub: "Thoughtfully written promises" },
+    { value: "38", label: "Personalised Parables", sub: "You as the good and faithful one", teaser: teaser.text },
+    { value: "📱", label: "Available Now", sub: "On the App Store and Google Play" },
+  ];
+
   return (
     <section className="relative z-10 px-6 sm:px-12 py-20 sm:py-28">
       <div className="max-w-5xl mx-auto text-center">
@@ -18,7 +42,7 @@ const ImpactSection = () => {
           Built with <span className="italic gradient-text">Love</span>, Shared with Purpose
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-stretch">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -45,6 +69,17 @@ const ImpactSection = () => {
               <div className="relative text-xs text-muted-foreground leading-relaxed max-w-[18ch] text-center">
                 {stat.sub}
               </div>
+
+              {stat.teaser && (
+                <div className="relative mt-4 pt-4 border-t border-border/50 w-full">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/80 mb-2">
+                    A glimpse
+                  </p>
+                  <p className="font-display italic text-xs sm:text-sm text-foreground/80 leading-relaxed text-center text-balance">
+                    “{stat.teaser}”
+                  </p>
+                </div>
+              )}
 
               {/* Subtle bottom accent line */}
               <div
