@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const stats = [
   { value: "2026", label: "Established", sub: "Born from quiet intention" },
   { value: "365", label: "Promises", sub: "Thoughtfully written promises" },
-  { value: "100%", label: "Handcrafted", sub: "Premium linen-textured cardstock" },
+  { value: "📱", label: "Available Now", sub: "On the App Store and Google Play" },
   { value: "38", label: "Personalised Parables", sub: "You as the good and faithful one" },
 ];
 
