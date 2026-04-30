@@ -1,12 +1,18 @@
-import { useMemo } from "react";
+import { useMemo, type ReactNode } from "react";
 import { motion } from "framer-motion";
+import { Apple, Smartphone } from "lucide-react";
 import { parables } from "@/data/parables";
+
+// TODO: replace with real store URLs once published.
+const APP_STORE_URL = "#";
+const PLAY_STORE_URL = "#";
 
 type Stat = {
   value: string;
   label: string;
   sub: string;
-  teaser?: string;
+  teaserLabel?: string;
+  teaser?: ReactNode;
 };
 
 interface ImpactSectionProps {
@@ -14,22 +20,57 @@ interface ImpactSectionProps {
 }
 
 const ImpactSection = ({ name }: ImpactSectionProps) => {
-  const teaser = useMemo(() => {
+  const parableTeaser = useMemo(() => {
     const protagonist = name?.trim() || "you";
     const p = parables[Math.floor(Math.random() * parables.length)];
-    // Take the first sentence for a short teaser.
     const firstSentence = p.story.split(/(?<=[.!?])\s/)[0];
-    return {
-      title: p.title,
-      text: firstSentence.split("{name}").join(protagonist),
-    };
+    return firstSentence.split("{name}").join(protagonist);
   }, [name]);
 
   const stats: Stat[] = [
     { value: "2026", label: "Established", sub: "Born from quiet intention" },
     { value: "365", label: "Promises", sub: "Thoughtfully written promises" },
-    { value: "38", label: "Personalised Parables", sub: "You as the good and faithful one", teaser: teaser.text },
-    { value: "📱", label: "Available Now", sub: "On the App Store and Google Play" },
+    {
+      value: "38",
+      label: "Personalised Parables",
+      sub: "You as the good and faithful one",
+      teaserLabel: "A glimpse",
+      teaser: (
+        <p className="font-display italic text-xs sm:text-sm text-foreground/80 leading-relaxed text-center text-balance">
+          “{parableTeaser}”
+        </p>
+      ),
+    },
+    {
+      value: "📱",
+      label: "Available Now",
+      sub: "On the App Store and Google Play",
+      teaserLabel: "Get the app",
+      teaser: (
+        <div className="flex flex-col gap-2">
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Download Words of Life on the App Store"
+            className="flex items-center justify-center gap-2 rounded-full border border-border/60 bg-background/60 backdrop-blur px-3 h-9 text-xs font-medium transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
+          >
+            <Apple className="h-4 w-4" strokeWidth={1.6} />
+            <span>App Store</span>
+          </a>
+          <a
+            href={PLAY_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Get Words of Life on Google Play"
+            className="flex items-center justify-center gap-2 rounded-full border border-border/60 bg-background/60 backdrop-blur px-3 h-9 text-xs font-medium transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
+          >
+            <Smartphone className="h-4 w-4" strokeWidth={1.6} />
+            <span>Google Play</span>
+          </a>
+        </div>
+      ),
+    },
   ];
 
   return (
@@ -71,14 +112,22 @@ const ImpactSection = ({ name }: ImpactSectionProps) => {
               </div>
 
               {stat.teaser && (
-                <div className="relative mt-4 pt-4 border-t border-border/50 w-full">
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/80 mb-2">
-                    A glimpse
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{
+                    duration: 0.7,
+                    delay: i * 0.1 + 0.45,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="relative mt-4 pt-4 border-t border-border/50 w-full"
+                >
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/80 mb-2 text-center">
+                    {stat.teaserLabel}
                   </p>
-                  <p className="font-display italic text-xs sm:text-sm text-foreground/80 leading-relaxed text-center text-balance">
-                    “{stat.teaser}”
-                  </p>
-                </div>
+                  {stat.teaser}
+                </motion.div>
               )}
 
               {/* Subtle bottom accent line */}
