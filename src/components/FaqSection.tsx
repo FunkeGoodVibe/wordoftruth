@@ -8,7 +8,7 @@ import {
 
 const faqs = [
   {
-    q: "What exactly is Word of Truth?",
+    q: "What exactly is Words of Life?",
     a: "A collection of 365 thoughtfully written promise cards — one for each day — designed to offer a quiet word of encouragement, peace, or guidance whenever you need it.",
   },
   {
