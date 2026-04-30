@@ -9,23 +9,19 @@ import {
 const faqs = [
   {
     q: "What exactly is Words of Life?",
-    a: "A collection of 365 thoughtfully written promise cards — one for each day — designed to offer a quiet word of encouragement, peace, or guidance whenever you need it.",
+    a: "A collection of 365 thoughtfully written promises — one for each day — presented to you in a popup notification in your mobile app — designed to offer a quiet word of encouragement, peace, or guidance whenever you need it.",
   },
   {
     q: "How do I use the daily card draw?",
-    a: "Simply tap 'Draw your card' and a single promise will be revealed. Sit with it, breathe, and let it shape your day. You can draw again anytime you'd like a new word.",
+    a: "Simply download the Words of Life app in the App or Google Play store. A personalised affirmation in the form of a single promise will be revealed to you. Sit with it, breathe, and let it shape your day. You can draw again anytime you'd like a new word.",
   },
   {
-    q: "Are the physical cards different from the website?",
-    a: "The website lets you experience the promises digitally. The Limited Edition deck is a tangible, handcrafted version on premium linen-textured cardstock — perfect for gifting or keeping by your bedside.",
+    q: "Are the physical cards available, in addition to the mobile app?",
+    a: "The mobile app lets you experience the promises digitally. Currently we are working on a Limited Edition physical deck — perfect for gifting or keeping by your bedside. Watch this space!",
   },
   {
-    q: "When will my order ship?",
-    a: "Orders typically ship within 3–5 business days. You'll receive a tracking link by email as soon as your deck is on its way.",
-  },
-  {
-    q: "Do you offer refunds?",
-    a: "Yes — if your cards arrive damaged or you're not satisfied, reach out within 30 days and we'll make it right.",
+    q: "How much does it cost?",
+    a: "It costs a voluntary donation of £5 to download the app from the App Store. All contributions will be donated to a good cause.",
   },
 ];
 
