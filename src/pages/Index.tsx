@@ -7,6 +7,7 @@ import PromisesLibrary from "@/components/PromisesLibrary";
 import AppDownloadSection from "@/components/AppDownloadSection";
 import ContactSection from "@/components/ContactSection";
 import FaqSection from "@/components/FaqSection";
+import ParablesSection from "@/components/ParablesSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { affirmations, type Affirmation } from "@/data/affirmations";
@@ -200,6 +201,7 @@ const Index = () => {
 
       <ImpactSection />
       <PromisesLibrary />
+      <ParablesSection name={name} />
       <AppDownloadSection />
       <ContactSection />
       <FaqSection />
