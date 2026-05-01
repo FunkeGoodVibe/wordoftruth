@@ -3,15 +3,13 @@ import { getStripe, getStripeEnvironment } from "@/lib/stripe";
 import { supabase } from "@/integrations/supabase/client";
 
 interface StripeEmbeddedCheckoutProps {
-  priceId: string;
-  quantity?: number;
+  amountInCents?: number;
   customerEmail?: string;
   returnUrl?: string;
 }
 
 export function StripeEmbeddedCheckoutComponent({
-  priceId,
-  quantity,
+  amountInCents,
   customerEmail,
   returnUrl,
 }: StripeEmbeddedCheckoutProps) {
@@ -20,8 +18,7 @@ export function StripeEmbeddedCheckoutComponent({
       returnUrl ?? `${window.location.origin}/checkout/return?session_id={CHECKOUT_SESSION_ID}`;
     const { data, error } = await supabase.functions.invoke("create-checkout", {
       body: {
-        priceId,
-        quantity,
+        amountInCents,
         customerEmail,
         returnUrl: finalReturnUrl,
         environment: getStripeEnvironment(),

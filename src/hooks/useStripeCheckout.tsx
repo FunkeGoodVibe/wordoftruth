@@ -2,8 +2,7 @@ import { useCallback, useState } from "react";
 import { StripeEmbeddedCheckoutComponent } from "@/components/StripeEmbeddedCheckout";
 
 interface CheckoutOptions {
-  priceId: string;
-  quantity?: number;
+  amountInCents?: number;
   customerEmail?: string;
   returnUrl?: string;
 }
