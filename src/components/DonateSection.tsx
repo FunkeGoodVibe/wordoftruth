@@ -22,22 +22,15 @@ const DonateSection = () => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-2xl mx-auto text-center space-y-6"
       >
-        <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">
-          Voluntary donation
-        </p>
+        <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Voluntary donation</p>
         <h2 className="font-display text-4xl sm:text-5xl leading-tight text-balance">
           Give <span className="italic gradient-text">£10</span>, give a little hope.
         </h2>
         <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-md mx-auto">
-          The app is yours, freely. If it has met you in a quiet moment, consider a £10
-          donation — every contribution goes to a good cause.
+          The app is yours, freely. If it has met you in a quiet moment, consider a £10 donation.
         </p>
         <div className="pt-2">
-          <Button
-            size="lg"
-            onClick={handleDonate}
-            className="rounded-full px-8 h-12 text-base font-medium shadow-soft"
-          >
+          <Button size="lg" onClick={handleDonate} className="rounded-full px-8 h-12 text-base font-medium shadow-soft">
             <Heart className="mr-2 h-4 w-4" strokeWidth={2} />
             Donate £10
           </Button>
@@ -54,9 +47,7 @@ const DonateSection = () => {
             >
               <X className="h-4 w-4" />
             </button>
-            <div className="p-4 sm:p-6">
-              {checkoutElement}
-            </div>
+            <div className="p-4 sm:p-6">{checkoutElement}</div>
           </div>
         </div>
       )}
