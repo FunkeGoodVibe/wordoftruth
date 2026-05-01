@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     q: "How much does it cost?",
-    a: "It costs a voluntary donation of £10 to download the app from the App Store.",
+    a: "Suggested donation amount of £10 to download the final product. However, the alpha and beta version of the app whilst in prototype phase can be downloaded for free",
   },
 ];
 
