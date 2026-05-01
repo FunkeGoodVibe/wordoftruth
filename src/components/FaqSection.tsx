@@ -1,10 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
   {
@@ -21,7 +16,7 @@ const faqs = [
   },
   {
     q: "How much does it cost?",
-    a: "It costs a voluntary donation of £10 to download the app from the App Store. All contributions will be donated to a good cause.",
+    a: "It costs a voluntary donation of £10 to download the app from the App Store.",
   },
 ];
 
@@ -36,9 +31,7 @@ const FaqSection = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-12"
         >
-          <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4">
-            Questions
-          </p>
+          <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4">Questions</p>
           <h2 className="font-display text-4xl sm:text-5xl leading-tight mb-4 text-balance">
             A few <span className="italic gradient-text">gentle</span> answers
           </h2>
@@ -56,17 +49,11 @@ const FaqSection = () => {
         >
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) => (
-              <AccordionItem
-                key={faq.q}
-                value={`item-${i}`}
-                className="border-border/60 last:border-0"
-              >
+              <AccordionItem key={faq.q} value={`item-${i}`} className="border-border/60 last:border-0">
                 <AccordionTrigger className="text-left font-display text-lg hover:no-underline px-2 py-5">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed px-2 pb-5">
-                  {faq.a}
-                </AccordionContent>
+                <AccordionContent className="text-muted-foreground leading-relaxed px-2 pb-5">{faq.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
