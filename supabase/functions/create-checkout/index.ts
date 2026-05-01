@@ -33,14 +33,8 @@ Deno.serve(async (req) => {
 
   try {
     const body = await req.json();
-    const { priceId, quantity, customerEmail, returnUrl, environment } = body ?? {};
+    const { customerEmail, returnUrl, environment, amountInCents } = body ?? {};
 
-    if (!priceId || typeof priceId !== "string" || !/^[a-zA-Z0-9_-]+$/.test(priceId)) {
-      return new Response(JSON.stringify({ error: "Invalid priceId" }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
     if (!returnUrl || typeof returnUrl !== "string") {
       return new Response(JSON.stringify({ error: "Missing returnUrl" }), {
         status: 400,
@@ -54,22 +48,23 @@ Deno.serve(async (req) => {
       });
     }
 
+    const amount = typeof amountInCents === "number" && amountInCents >= 50
+      ? Math.round(amountInCents)
+      : 1000; // default £10.00
+
     const env: StripeEnv = environment;
     const stripe = createStripeClient(env);
 
-    const prices = await stripe.prices.list({ lookup_keys: [priceId] });
-    if (!prices.data.length) {
-      return new Response(JSON.stringify({ error: "Price not found" }), {
-        status: 404,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-    const stripePrice = prices.data[0];
-    const isRecurring = stripePrice.type === "recurring";
-
     const session = await stripe.checkout.sessions.create({
-      line_items: [{ price: stripePrice.id, quantity: quantity || 1 }],
-      mode: isRecurring ? "subscription" : "payment",
+      line_items: [{
+        price_data: {
+          currency: "gbp",
+          product_data: { name: "Voluntary Donation" },
+          unit_amount: amount,
+        },
+        quantity: 1,
+      }],
+      mode: "payment",
       ui_mode: "embedded_page",
       return_url: returnUrl,
       ...(customerEmail && { customer_email: customerEmail }),

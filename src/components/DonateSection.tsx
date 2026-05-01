@@ -8,7 +8,7 @@ const DonateSection = () => {
 
   const handleDonate = () => {
     openCheckout({
-      priceId: "donation_10_gbp",
+      amountInCents: 1000,
       returnUrl: `${window.location.origin}/checkout/return?session_id={CHECKOUT_SESSION_ID}`,
     });
   };
