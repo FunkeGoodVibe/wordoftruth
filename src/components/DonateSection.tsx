@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Heart, X } from "lucide-react";
+import { X } from "lucide-react";
+import BitmojiIcon from "@/components/BitmojiIcon";
 import { Button } from "@/components/ui/button";
 import { useStripeCheckout } from "@/hooks/useStripeCheckout";
 
@@ -31,7 +32,7 @@ const DonateSection = () => {
         </p>
         <div className="pt-2">
           <Button size="lg" onClick={handleDonate} className="rounded-full px-8 h-12 text-base font-medium shadow-soft">
-            <Heart className="mr-2 h-4 w-4" strokeWidth={2} />
+            <BitmojiIcon name="heart" className="mr-2 h-6 w-6" />
             Donate £10
           </Button>
         </div>

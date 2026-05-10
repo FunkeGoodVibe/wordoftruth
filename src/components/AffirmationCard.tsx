@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import BitmojiIcon from "@/components/BitmojiIcon";
 import type { Affirmation } from "@/data/affirmations";
 import { themeLabel } from "@/data/affirmations";
 
@@ -45,7 +45,7 @@ const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
               transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
               className="relative"
             >
-              <Sparkles className="h-14 w-14" strokeWidth={1.2} />
+              <BitmojiIcon name="sparkle" className="h-24 w-24 drop-shadow-lg" />
             </motion.div>
             <div className="text-center space-y-2">
               <p className="font-display italic text-2xl tracking-wide">
@@ -137,7 +137,7 @@ const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
                   transition={{ delay: 0.85, duration: 0.6 }}
                   className="flex flex-col items-center gap-3"
                 >
-                  <Sparkles className="h-4 w-4 text-primary/70" strokeWidth={1.5} />
+                  <BitmojiIcon name="sparkle" className="h-7 w-7" />
                   <p className="text-xs tracking-widest uppercase text-muted-foreground">
                     a promise for you
                   </p>

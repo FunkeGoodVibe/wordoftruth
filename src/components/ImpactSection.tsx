@@ -1,6 +1,6 @@
 import { useMemo, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { Apple, Smartphone } from "lucide-react";
+import BitmojiIcon from "@/components/BitmojiIcon";
 import { parables } from "@/data/parables";
 
 // TODO: replace with real store URLs once published.
@@ -55,7 +55,7 @@ const ImpactSection = ({ name }: ImpactSectionProps) => {
             aria-label="Download Words of Life on the App Store"
             className="flex items-center justify-center gap-2 rounded-full border border-border/60 bg-background/60 backdrop-blur px-3 h-9 text-xs font-medium transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
           >
-            <Apple className="h-4 w-4" strokeWidth={1.6} />
+            <BitmojiIcon name="phone" className="h-6 w-6" />
             <span>App Store</span>
           </a>
           <a
@@ -65,7 +65,7 @@ const ImpactSection = ({ name }: ImpactSectionProps) => {
             aria-label="Get Words of Life on Google Play"
             className="flex items-center justify-center gap-2 rounded-full border border-border/60 bg-background/60 backdrop-blur px-3 h-9 text-xs font-medium transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
           >
-            <Smartphone className="h-4 w-4" strokeWidth={1.6} />
+            <BitmojiIcon name="phone" className="h-6 w-6" />
             <span>Google Play</span>
           </a>
         </div>
