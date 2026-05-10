@@ -90,6 +90,9 @@ const ContactSection = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-12"
         >
+          <div className="flex justify-center mb-4">
+            <UserAvatar className="h-16 w-16 ring-2 ring-primary/30 shadow-soft" />
+          </div>
           <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4">
             Get in Touch
           </p>
