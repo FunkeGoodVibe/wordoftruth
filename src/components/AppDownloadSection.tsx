@@ -25,6 +25,9 @@ const AppDownloadSection = () => {
           <p className="relative text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4">
             Take it with you
           </p>
+          <div className="relative flex justify-center mb-4">
+            <UserAvatar className="h-16 w-16 ring-2 ring-primary/30 shadow-soft" />
+          </div>
           <h2 className="relative font-display text-4xl sm:text-5xl leading-tight mb-5 text-balance">
             Download the <span className="italic gradient-text">App</span>
           </h2>
