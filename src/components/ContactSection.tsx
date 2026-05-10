@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Loader2 } from "lucide-react";
 import BitmojiIcon from "@/components/BitmojiIcon";
+import UserAvatar from "@/components/UserAvatar";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
