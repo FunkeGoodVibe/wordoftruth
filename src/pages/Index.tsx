@@ -71,9 +71,9 @@ const Index = () => {
     document.title = "Daily Affirmations — Draw Your Card";
   }, []);
 
-  // useEffect(() => {
-  //   window.location.replace("https://wordsoflife.dev");
-  // }, []);
+  useEffect(() => {
+    window.location.replace("https://wordsoflife.dev");
+  }, []);
 
   const today = new Date().toLocaleDateString(undefined, {
     weekday: "long",
