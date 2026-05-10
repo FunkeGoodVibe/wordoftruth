@@ -45,6 +45,9 @@ const ParablesSection = ({ name }: ParablesSectionProps) => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-12 space-y-4"
         >
+          <div className="flex justify-center mb-2">
+            <UserAvatar className="h-16 w-16 ring-2 ring-primary/30 shadow-soft" />
+          </div>
           <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">
             Stories of Jesus
           </p>
