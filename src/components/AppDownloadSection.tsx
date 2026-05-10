@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import BitmojiIcon from "@/components/BitmojiIcon";
-import UserAvatar from "@/components/UserAvatar";
+import { Apple, Smartphone } from "lucide-react";
 
 const AppDownloadSection = () => {
   return (
@@ -25,9 +24,6 @@ const AppDownloadSection = () => {
           <p className="relative text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4">
             Take it with you
           </p>
-          <div className="relative flex justify-center mb-4">
-            <UserAvatar className="h-16 w-16 ring-2 ring-primary/30 shadow-soft" />
-          </div>
           <h2 className="relative font-display text-4xl sm:text-5xl leading-tight mb-5 text-balance">
             Download the <span className="italic gradient-text">App</span>
           </h2>
@@ -40,7 +36,7 @@ const AppDownloadSection = () => {
               href="#"
               className="group flex items-center gap-3 rounded-full border border-border/60 bg-background/60 backdrop-blur px-6 h-14 min-w-[200px] shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
             >
-              <BitmojiIcon name="phone" className="h-9 w-9" />
+              <Apple className="h-6 w-6" strokeWidth={1.6} />
               <div className="text-left leading-tight">
                 <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
                   Download on the
@@ -53,7 +49,7 @@ const AppDownloadSection = () => {
               href="#"
               className="group flex items-center gap-3 rounded-full border border-border/60 bg-background/60 backdrop-blur px-6 h-14 min-w-[200px] shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
             >
-              <BitmojiIcon name="phone" className="h-9 w-9" />
+              <Smartphone className="h-6 w-6" strokeWidth={1.6} />
               <div className="text-left leading-tight">
                 <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
                   Get it on

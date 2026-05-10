@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Shuffle } from "lucide-react";
+import { Shuffle, Sparkles } from "lucide-react";
 import AffirmationCard from "@/components/AffirmationCard";
-import BitmojiIcon from "@/components/BitmojiIcon";
-import UserAvatar from "@/components/UserAvatar";
-import AvatarBuilder from "@/components/AvatarBuilder";
 import ImpactSection from "@/components/ImpactSection";
 import PromisesLibrary from "@/components/PromisesLibrary";
 import AppDownloadSection from "@/components/AppDownloadSection";
@@ -95,25 +92,12 @@ const Index = () => {
       {/* Header */}
       <header className="relative z-10 flex items-center justify-between px-6 sm:px-12 py-6">
         <div className="flex items-center gap-2 font-display text-lg">
-          <BitmojiIcon name="sparkle" className="h-7 w-7" />
+          <Sparkles className="h-4 w-4 text-primary" strokeWidth={1.8} />
           <span className="tracking-tight">Words of Life</span>
         </div>
-        <div className="flex items-center gap-4">
-          <p className="hidden sm:block text-xs uppercase tracking-[0.35em] text-muted-foreground">
-            {today}
-          </p>
-          <AvatarBuilder
-            trigger={
-              <button
-                type="button"
-                aria-label="Customise your avatar"
-                className="rounded-full ring-2 ring-transparent hover:ring-primary/40 transition"
-              >
-                <UserAvatar className="h-10 w-10" />
-              </button>
-            }
-          />
-        </div>
+        <p className="hidden sm:block text-xs uppercase tracking-[0.35em] text-muted-foreground">
+          {today}
+        </p>
       </header>
 
       {/* Hero / Card */}
@@ -237,7 +221,7 @@ const Index = () => {
                 onClick={handleDraw}
                 className="rounded-full px-8 h-12 text-base font-medium shadow-soft"
               >
-                <BitmojiIcon name="sparkle" className="mr-2 h-6 w-6" />
+                <Sparkles className="mr-2 h-4 w-4" strokeWidth={2} />
                 Draw your card
               </Button>
             </motion.div>

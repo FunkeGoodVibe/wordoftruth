@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Loader2 } from "lucide-react";
-import BitmojiIcon from "@/components/BitmojiIcon";
-import UserAvatar from "@/components/UserAvatar";
+import { Mail, Send, Loader2 } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -90,9 +88,6 @@ const ContactSection = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-12"
         >
-          <div className="flex justify-center mb-4">
-            <UserAvatar className="h-16 w-16 ring-2 ring-primary/30 shadow-soft" />
-          </div>
           <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4">
             Get in Touch
           </p>
@@ -192,7 +187,7 @@ const ContactSection = () => {
             </Button>
 
             <p className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-2">
-              <BitmojiIcon name="mail" className="h-5 w-5" />
+              <Mail className="h-3 w-3" strokeWidth={1.8} />
               We usually reply within a day or two.
             </p>
           </div>

@@ -1,7 +1,6 @@
 import { useMemo, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import BitmojiIcon from "@/components/BitmojiIcon";
-import UserAvatar from "@/components/UserAvatar";
+import { Apple, Smartphone } from "lucide-react";
 import { parables } from "@/data/parables";
 
 // TODO: replace with real store URLs once published.
@@ -56,7 +55,7 @@ const ImpactSection = ({ name }: ImpactSectionProps) => {
             aria-label="Download Words of Life on the App Store"
             className="flex items-center justify-center gap-2 rounded-full border border-border/60 bg-background/60 backdrop-blur px-3 h-9 text-xs font-medium transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
           >
-            <BitmojiIcon name="phone" className="h-6 w-6" />
+            <Apple className="h-4 w-4" strokeWidth={1.6} />
             <span>App Store</span>
           </a>
           <a
@@ -66,7 +65,7 @@ const ImpactSection = ({ name }: ImpactSectionProps) => {
             aria-label="Get Words of Life on Google Play"
             className="flex items-center justify-center gap-2 rounded-full border border-border/60 bg-background/60 backdrop-blur px-3 h-9 text-xs font-medium transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
           >
-            <BitmojiIcon name="phone" className="h-6 w-6" />
+            <Smartphone className="h-4 w-4" strokeWidth={1.6} />
             <span>Google Play</span>
           </a>
         </div>
@@ -77,9 +76,6 @@ const ImpactSection = ({ name }: ImpactSectionProps) => {
   return (
     <section className="relative z-10 px-6 sm:px-12 py-20 sm:py-28">
       <div className="max-w-5xl mx-auto text-center">
-        <div className="flex justify-center mb-4">
-          <UserAvatar className="h-16 w-16 ring-2 ring-primary/30 shadow-soft" />
-        </div>
         <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4">
           Our Impact
         </p>

@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
-import { X } from "lucide-react";
-import BitmojiIcon from "@/components/BitmojiIcon";
-import UserAvatar from "@/components/UserAvatar";
+import { Heart, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useStripeCheckout } from "@/hooks/useStripeCheckout";
 
@@ -24,9 +22,6 @@ const DonateSection = () => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-2xl mx-auto text-center space-y-6"
       >
-        <div className="flex justify-center">
-          <UserAvatar className="h-16 w-16 ring-2 ring-primary/30 shadow-soft" />
-        </div>
         <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Voluntary donation</p>
         <h2 className="font-display text-4xl sm:text-5xl leading-tight text-balance">
           Give <span className="italic gradient-text">£10</span>, give a little hope.
@@ -36,7 +31,7 @@ const DonateSection = () => {
         </p>
         <div className="pt-2">
           <Button size="lg" onClick={handleDonate} className="rounded-full px-8 h-12 text-base font-medium shadow-soft">
-            <BitmojiIcon name="heart" className="mr-2 h-6 w-6" />
+            <Heart className="mr-2 h-4 w-4" strokeWidth={2} />
             Donate £10
           </Button>
         </div>

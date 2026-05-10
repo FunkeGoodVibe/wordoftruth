@@ -1,8 +1,6 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import BitmojiIcon from "@/components/BitmojiIcon";
-import UserAvatar from "@/components/UserAvatar";
+import { BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { parables } from "@/data/parables";
 
@@ -45,9 +43,6 @@ const ParablesSection = ({ name }: ParablesSectionProps) => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-12 space-y-4"
         >
-          <div className="flex justify-center mb-2">
-            <UserAvatar className="h-16 w-16 ring-2 ring-primary/30 shadow-soft" />
-          </div>
           <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">
             Stories of Jesus
           </p>
@@ -87,7 +82,7 @@ const ParablesSection = ({ name }: ParablesSectionProps) => {
                 className="group relative rounded-2xl bg-card-front shadow-soft p-6 border border-primary/10 hover:border-primary/30 transition-colors"
               >
                 <div className="absolute top-4 right-4 opacity-50 group-hover:opacity-100 transition-opacity">
-                  <BitmojiIcon name="book" className="h-6 w-6" />
+                  <BookOpen className="h-3.5 w-3.5 text-primary" strokeWidth={1.5} />
                 </div>
                 <p className="text-[0.6rem] uppercase tracking-[0.35em] text-muted-foreground mb-3">
                   · Parable {start + i + 1} ·
