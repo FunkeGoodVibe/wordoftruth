@@ -24,6 +24,9 @@ const DonateSection = () => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-2xl mx-auto text-center space-y-6"
       >
+        <div className="flex justify-center">
+          <UserAvatar className="h-16 w-16 ring-2 ring-primary/30 shadow-soft" />
+        </div>
         <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Voluntary donation</p>
         <h2 className="font-display text-4xl sm:text-5xl leading-tight text-balance">
           Give <span className="italic gradient-text">£10</span>, give a little hope.
