@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Shuffle } from "lucide-react";
 import AffirmationCard from "@/components/AffirmationCard";
 import BitmojiIcon from "@/components/BitmojiIcon";
+import UserAvatar from "@/components/UserAvatar";
+import AvatarBuilder from "@/components/AvatarBuilder";
 import ImpactSection from "@/components/ImpactSection";
 import PromisesLibrary from "@/components/PromisesLibrary";
 import AppDownloadSection from "@/components/AppDownloadSection";
@@ -100,9 +102,22 @@ const Index = () => {
           <BitmojiIcon name="sparkle" className="h-7 w-7" />
           <span className="tracking-tight">Words of Life</span>
         </div>
-        <p className="hidden sm:block text-xs uppercase tracking-[0.35em] text-muted-foreground">
-          {today}
-        </p>
+        <div className="flex items-center gap-4">
+          <p className="hidden sm:block text-xs uppercase tracking-[0.35em] text-muted-foreground">
+            {today}
+          </p>
+          <AvatarBuilder
+            trigger={
+              <button
+                type="button"
+                aria-label="Customise your avatar"
+                className="rounded-full ring-2 ring-transparent hover:ring-primary/40 transition"
+              >
+                <UserAvatar className="h-10 w-10" />
+              </button>
+            }
+          />
+        </div>
       </header>
 
       {/* Hero / Card */}
