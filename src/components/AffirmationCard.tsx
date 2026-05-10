@@ -139,6 +139,7 @@ const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
                   transition={{ delay: 0.85, duration: 0.6 }}
                   className="flex flex-col items-center gap-3"
                 >
+                  <UserAvatar className="h-12 w-12 ring-2 ring-primary/30 shadow-soft" />
                   <BitmojiIcon name="sparkle" className="h-7 w-7" />
                   <p className="text-xs tracking-widest uppercase text-muted-foreground">
                     a promise for you
