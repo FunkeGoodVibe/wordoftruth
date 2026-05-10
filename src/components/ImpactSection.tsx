@@ -1,6 +1,7 @@
 import { useMemo, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import BitmojiIcon from "@/components/BitmojiIcon";
+import UserAvatar from "@/components/UserAvatar";
 import { parables } from "@/data/parables";
 
 // TODO: replace with real store URLs once published.
