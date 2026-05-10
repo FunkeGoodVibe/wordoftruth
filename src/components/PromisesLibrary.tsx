@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import BitmojiIcon from "@/components/BitmojiIcon";
+import UserAvatar from "@/components/UserAvatar";
 import { Button } from "@/components/ui/button";
 import { affirmations, themeLabel, type Affirmation } from "@/data/affirmations";
 
@@ -49,6 +50,9 @@ const PromisesLibrary = ({ name }: PromisesLibraryProps) => {
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
+          <div className="flex justify-center mb-2">
+            <UserAvatar className="h-16 w-16 ring-2 ring-primary/30 shadow-soft" />
+          </div>
           <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">
             {name ? `Curated for ${name}` : "The full collection"}
           </p>

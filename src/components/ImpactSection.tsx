@@ -1,6 +1,7 @@
 import { useMemo, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import BitmojiIcon from "@/components/BitmojiIcon";
+import UserAvatar from "@/components/UserAvatar";
 import { parables } from "@/data/parables";
 
 // TODO: replace with real store URLs once published.
@@ -76,6 +77,9 @@ const ImpactSection = ({ name }: ImpactSectionProps) => {
   return (
     <section className="relative z-10 px-6 sm:px-12 py-20 sm:py-28">
       <div className="max-w-5xl mx-auto text-center">
+        <div className="flex justify-center mb-4">
+          <UserAvatar className="h-16 w-16 ring-2 ring-primary/30 shadow-soft" />
+        </div>
         <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4">
           Our Impact
         </p>

@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import BitmojiIcon from "@/components/BitmojiIcon";
+import UserAvatar from "@/components/UserAvatar";
 import type { Affirmation } from "@/data/affirmations";
 import { themeLabel } from "@/data/affirmations";
 
@@ -47,6 +48,7 @@ const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
             >
               <BitmojiIcon name="sparkle" className="h-24 w-24 drop-shadow-lg" />
             </motion.div>
+            <UserAvatar className="h-16 w-16 ring-2 ring-primary-foreground/40 shadow-soft" />
             <div className="text-center space-y-2">
               <p className="font-display italic text-2xl tracking-wide">
                 a gentle word
@@ -137,6 +139,7 @@ const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
                   transition={{ delay: 0.85, duration: 0.6 }}
                   className="flex flex-col items-center gap-3"
                 >
+                  <UserAvatar className="h-12 w-12 ring-2 ring-primary/30 shadow-soft" />
                   <BitmojiIcon name="sparkle" className="h-7 w-7" />
                   <p className="text-xs tracking-widest uppercase text-muted-foreground">
                     a promise for you
