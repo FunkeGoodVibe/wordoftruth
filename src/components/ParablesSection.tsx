@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import BitmojiIcon from "@/components/BitmojiIcon";
 import { Button } from "@/components/ui/button";
 import { parables } from "@/data/parables";
 
@@ -82,7 +83,7 @@ const ParablesSection = ({ name }: ParablesSectionProps) => {
                 className="group relative rounded-2xl bg-card-front shadow-soft p-6 border border-primary/10 hover:border-primary/30 transition-colors"
               >
                 <div className="absolute top-4 right-4 opacity-50 group-hover:opacity-100 transition-opacity">
-                  <BookOpen className="h-3.5 w-3.5 text-primary" strokeWidth={1.5} />
+                  <BitmojiIcon name="book" className="h-6 w-6" />
                 </div>
                 <p className="text-[0.6rem] uppercase tracking-[0.35em] text-muted-foreground mb-3">
                   · Parable {start + i + 1} ·

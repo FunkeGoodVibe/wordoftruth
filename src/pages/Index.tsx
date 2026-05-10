@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Shuffle, Sparkles } from "lucide-react";
+import { Shuffle } from "lucide-react";
 import AffirmationCard from "@/components/AffirmationCard";
+import BitmojiIcon from "@/components/BitmojiIcon";
 import ImpactSection from "@/components/ImpactSection";
 import PromisesLibrary from "@/components/PromisesLibrary";
 import AppDownloadSection from "@/components/AppDownloadSection";
@@ -96,7 +97,7 @@ const Index = () => {
       {/* Header */}
       <header className="relative z-10 flex items-center justify-between px-6 sm:px-12 py-6">
         <div className="flex items-center gap-2 font-display text-lg">
-          <Sparkles className="h-4 w-4 text-primary" strokeWidth={1.8} />
+          <BitmojiIcon name="sparkle" className="h-7 w-7" />
           <span className="tracking-tight">Words of Life</span>
         </div>
         <p className="hidden sm:block text-xs uppercase tracking-[0.35em] text-muted-foreground">
@@ -225,7 +226,7 @@ const Index = () => {
                 onClick={handleDraw}
                 className="rounded-full px-8 h-12 text-base font-medium shadow-soft"
               >
-                <Sparkles className="mr-2 h-4 w-4" strokeWidth={2} />
+                <BitmojiIcon name="sparkle" className="mr-2 h-6 w-6" />
                 Draw your card
               </Button>
             </motion.div>

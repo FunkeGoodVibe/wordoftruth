@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Apple, Smartphone } from "lucide-react";
+import BitmojiIcon from "@/components/BitmojiIcon";
 
 const AppDownloadSection = () => {
   return (
@@ -36,7 +36,7 @@ const AppDownloadSection = () => {
               href="#"
               className="group flex items-center gap-3 rounded-full border border-border/60 bg-background/60 backdrop-blur px-6 h-14 min-w-[200px] shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
             >
-              <Apple className="h-6 w-6" strokeWidth={1.6} />
+              <BitmojiIcon name="phone" className="h-9 w-9" />
               <div className="text-left leading-tight">
                 <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
                   Download on the
@@ -49,7 +49,7 @@ const AppDownloadSection = () => {
               href="#"
               className="group flex items-center gap-3 rounded-full border border-border/60 bg-background/60 backdrop-blur px-6 h-14 min-w-[200px] shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
             >
-              <Smartphone className="h-6 w-6" strokeWidth={1.6} />
+              <BitmojiIcon name="phone" className="h-9 w-9" />
               <div className="text-left leading-tight">
                 <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
                   Get it on
