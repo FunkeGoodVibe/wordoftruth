@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import BitmojiIcon from "@/components/BitmojiIcon";
+import UserAvatar from "@/components/UserAvatar";
 
 const AppDownloadSection = () => {
   return (
