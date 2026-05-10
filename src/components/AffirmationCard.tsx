@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import BitmojiIcon from "@/components/BitmojiIcon";
+import UserAvatar from "@/components/UserAvatar";
 import type { Affirmation } from "@/data/affirmations";
 import { themeLabel } from "@/data/affirmations";
 
