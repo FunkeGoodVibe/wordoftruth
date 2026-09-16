@@ -1,16 +1,33 @@
+// ============= App listing page =============
+// When the app is approved on each store, replace the two placeholder URLs
+// below with the real listing links. Everything else can stay as-is.
+
+const APP_STORE_URL = "https://apps.apple.com/app/words-of-life/idPLACEHOLDER";
+const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.wordsoflife.app";
+
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Apple, ArrowLeft, Heart, Smartphone, Star } from "lucide-react";
+import { Apple, ArrowLeft, Heart, Info, Smartphone, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import libraryScreen from "@/assets/app-screen-library.png.asset.json";
-import communityScreen from "@/assets/app-screen-community.png.asset.json";
+import libraryScreen from "@/assets/app-screen-library.png";
+import communityScreen from "@/assets/app-screen-community.png";
 
 const screens = [
-  { src: libraryScreen.url, alt: "Browsing the library of 365 Bible promises by theme" },
+  { src: libraryScreen, alt: "Browsing the library of 365 Bible promises by theme" },
   {
-    src: communityScreen.url,
+    src: communityScreen,
     alt: "Community screen — connect with others who resonate with the same promise",
   },
+];
+
+const appInfo = [
+  { label: "Price", value: "Free" },
+  { label: "Category", value: "Lifestyle" },
+  { label: "Compatibility", value: "iPhone, iPad & Android" },
+  { label: "Languages", value: "English" },
+  { label: "Age rating", value: "4+" },
+  { label: "Developer", value: "Words of Life" },
+  { label: "In-app donations", value: "Voluntary £20" },
 ];
 
 const AppStorePage = () => {
@@ -27,17 +44,18 @@ const AppStorePage = () => {
           <ArrowLeft className="h-4 w-4" /> Back to Words of Life
         </Link>
 
+        {/* Store-style header */}
         <motion.header
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10 flex flex-col sm:flex-row sm:items-center gap-8"
         >
-          <div className="mx-auto sm:mx-0 h-24 w-24 shrink-0 rounded-[1.6rem] border border-border/60 bg-card/80 backdrop-blur shadow-soft flex items-center justify-center">
-            <span className="font-display text-3xl gradient-text italic">W</span>
+          <div className="mx-auto sm:mx-0 h-28 w-28 shrink-0 rounded-[1.8rem] border border-border/60 bg-card/80 backdrop-blur shadow-soft flex items-center justify-center">
+            <span className="font-display text-4xl gradient-text italic">W</span>
           </div>
           <div className="text-center sm:text-left space-y-3">
-            <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Now on mobile</p>
+            <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Words of Life Dev</p>
             <h1 className="font-display text-4xl sm:text-5xl leading-tight text-balance">
               Words of <span className="italic gradient-text">Life</span>
             </h1>
@@ -55,32 +73,44 @@ const AppStorePage = () => {
           </div>
         </motion.header>
 
-        <section className="mt-12 flex flex-col sm:flex-row items-center gap-4">
-          <a
-            href="#"
-            className="flex items-center gap-3 rounded-full border border-border/60 bg-background/60 backdrop-blur px-6 h-14 min-w-[200px] shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
-          >
-            <Apple className="h-6 w-6" strokeWidth={1.6} />
-            <div className="text-left leading-tight">
-              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Download on the</div>
-              <div className="text-sm font-medium">App Store</div>
-            </div>
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 rounded-full border border-border/60 bg-background/60 backdrop-blur px-6 h-14 min-w-[200px] shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
-          >
-            <Smartphone className="h-6 w-6" strokeWidth={1.6} />
-            <div className="text-left leading-tight">
-              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Get it on</div>
-              <div className="text-sm font-medium">Google Play</div>
-            </div>
-          </a>
+        {/* Download buttons — placeholder store links, swap when approved */}
+        <section className="mt-12">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-full border border-border/60 bg-background/60 backdrop-blur px-6 h-14 min-w-[200px] shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
+            >
+              <Apple className="h-6 w-6" strokeWidth={1.6} />
+              <div className="text-left leading-tight">
+                <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Download on the</div>
+                <div className="text-sm font-medium">App Store</div>
+              </div>
+            </a>
+            <a
+              href={PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-full border border-border/60 bg-background/60 backdrop-blur px-6 h-14 min-w-[200px] shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
+            >
+              <Smartphone className="h-6 w-6" strokeWidth={1.6} />
+              <div className="text-left leading-tight">
+                <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Get it on</div>
+                <div className="text-sm font-medium">Google Play</div>
+              </div>
+            </a>
+          </div>
+          <p className="mt-4 inline-flex items-center gap-2 text-xs text-muted-foreground">
+            <Info className="h-3.5 w-3.5" strokeWidth={1.8} />
+            Coming soon to the App Store and Google Play.
+          </p>
         </section>
 
+        {/* Screenshots, store style */}
         <section className="mt-16">
-          <h2 className="font-display text-2xl sm:text-3xl mb-6">A quiet moment, every day</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <h2 className="font-display text-2xl sm:text-3xl mb-6">Preview</h2>
+          <div className="flex gap-6 overflow-x-auto pb-4 -mx-6 px-6 sm:mx-0 sm:px-0 snap-x">
             {screens.map((screen, i) => (
               <motion.div
                 key={screen.alt}
@@ -88,7 +118,7 @@ const AppStorePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="rounded-3xl overflow-hidden border border-border/60 bg-card/60 backdrop-blur shadow-soft"
+                className="snap-center shrink-0 w-[240px] sm:w-[280px] rounded-[2rem] overflow-hidden border border-border/60 bg-card/60 backdrop-blur shadow-soft"
               >
                 <img
                   src={screen.src}
@@ -103,6 +133,7 @@ const AppStorePage = () => {
           </div>
         </section>
 
+        {/* About this app */}
         <section className="mt-16 max-w-2xl space-y-4">
           <h2 className="font-display text-2xl sm:text-3xl">About this app</h2>
           <p className="text-muted-foreground leading-relaxed">
@@ -117,6 +148,20 @@ const AppStorePage = () => {
           </p>
         </section>
 
+        {/* App information */}
+        <section className="mt-16">
+          <h2 className="font-display text-2xl sm:text-3xl mb-6">Information</h2>
+          <dl className="max-w-2xl rounded-3xl border border-border/60 bg-card/60 backdrop-blur shadow-soft divide-y divide-border/40">
+            {appInfo.map((item) => (
+              <div key={item.label} className="flex items-center justify-between gap-6 px-6 py-4">
+                <dt className="text-sm text-muted-foreground">{item.label}</dt>
+                <dd className="text-sm font-medium text-right">{item.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        {/* Donation */}
         <section className="mt-16 rounded-3xl border border-primary/20 bg-card/70 backdrop-blur p-10 text-center shadow-soft">
           <h2 className="font-display text-3xl sm:text-4xl mb-4 text-balance">
             Free to keep. <span className="italic gradient-text">£20</span> if it moved you.
