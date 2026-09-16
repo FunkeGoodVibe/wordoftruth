@@ -3,9 +3,8 @@ import { motion } from "framer-motion";
 import { Apple, Smartphone } from "lucide-react";
 import { parables } from "@/data/parables";
 
-// TODO: replace with real store URLs once published.
-const APP_STORE_URL = "#";
-const PLAY_STORE_URL = "#";
+const APP_STORE_URL = "https://wordsoflife.dev/app";
+const PLAY_STORE_URL = "https://wordsoflife.dev/app";
 
 type Stat = {
   value: string;
