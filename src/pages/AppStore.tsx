@@ -13,9 +13,9 @@ import libraryScreen from "@/assets/app-screen-library.png";
 import communityScreen from "@/assets/app-screen-community.png";
 
 const screens = [
-  { src: libraryScreen.url, alt: "Browsing the library of 365 Bible promises by theme" },
+  { src: libraryScreen, alt: "Browsing the library of 365 Bible promises by theme" },
   {
-    src: communityScreen.url,
+    src: communityScreen,
     alt: "Community screen — connect with others who resonate with the same promise",
   },
 ];
