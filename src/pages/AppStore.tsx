@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Apple, ArrowLeft, Heart, Info, Smartphone, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import libraryScreen from "@/assets/app-screen-library.png.asset.json";
-import communityScreen from "@/assets/app-screen-community.png.asset.json";
+import libraryScreen from "@/assets/app-screen-library.png";
+import communityScreen from "@/assets/app-screen-community.png";
 
 const screens = [
   { src: libraryScreen.url, alt: "Browsing the library of 365 Bible promises by theme" },
