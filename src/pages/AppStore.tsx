@@ -11,8 +11,13 @@ import { Apple, ArrowLeft, Heart, Info, Smartphone, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import libraryScreen from "@/assets/app-screen-library.png";
 import communityScreen from "@/assets/app-screen-community.png";
+import communityNetworkScreen from "@/assets/app-screen-community-network.png";
 
 const screens = [
+  {
+    src: communityNetworkScreen,
+    alt: "Community screen — people gathered around today's shared promise",
+  },
   { src: libraryScreen, alt: "Browsing the library of 365 Bible promises by theme" },
   {
     src: communityScreen,
