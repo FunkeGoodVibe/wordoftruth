@@ -27,7 +27,7 @@ const DonateSection = () => {
           Give <span className="italic gradient-text">£10</span>, give a little hope.
         </h2>
         <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-md mx-auto">
-          The app is yours, freely. If it has met you in a quiet moment, consider a £10 donation.
+          The app is yours, freely. If it has met you in a quiet moment, consider a £20 donation.
         </p>
         <div className="pt-2">
           <Button size="lg" onClick={handleDonate} className="rounded-full px-8 h-12 text-base font-medium shadow-soft">
