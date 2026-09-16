@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Apple, Smartphone } from "lucide-react";
+import { Apple, Smartphone, Users } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
-const AppDownloadSection = () => {
+const AppDownloadSection = ({ name }: { name?: string }) => {
+  const { user } = useAuth();
+
   return (
     <section className="relative z-10 px-6 sm:px-12 py-20 sm:py-28">
       <div className="max-w-3xl mx-auto">
@@ -58,6 +62,17 @@ const AppDownloadSection = () => {
               </div>
             </a>
           </div>
+
+          <Button asChild className="relative mt-8 rounded-full h-12 px-8 text-base shadow-soft">
+            <Link to={user ? "/community" : "/auth"}>
+              <Users className="mr-2 h-4 w-4" strokeWidth={2} />
+              {user
+                ? name
+                  ? `Open the community, ${name}`
+                  : "Open the community"
+                : "Join the community"}
+            </Link>
+          </Button>
         </motion.div>
       </div>
     </section>
