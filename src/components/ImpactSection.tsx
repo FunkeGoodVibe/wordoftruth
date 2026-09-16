@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Apple, Smartphone } from "lucide-react";
 import { parables } from "@/data/parables";
 
-const APP_STORE_URL = "https://wordsoflife.dev/app";
-const PLAY_STORE_URL = "https://wordsoflife.dev/app";
+const APP_STORE_URL = "/app";
+const PLAY_STORE_URL = "/app";
 
 type Stat = {
   value: string;
