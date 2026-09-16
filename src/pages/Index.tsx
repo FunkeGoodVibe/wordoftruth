@@ -15,6 +15,13 @@ import { Input } from "@/components/ui/input";
 import { affirmations, type Affirmation } from "@/data/affirmations";
 
 const NAME_STORAGE_KEY = "stillpoint:name";
+const DRAWS_STORAGE_KEY = "stillpoint:draws";
+const MAX_DRAWS_PER_DAY = 3;
+
+const dayKey = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${`${d.getMonth() + 1}`.padStart(2, "0")}-${`${d.getDate()}`.padStart(2, "0")}`;
+};
 
 const drawRandom = (exclude?: Affirmation | null): Affirmation => {
   const pool = exclude ? affirmations.filter((a) => a.text !== exclude.text) : affirmations;
@@ -28,11 +35,33 @@ const Index = () => {
   const [name, setName] = useState("");
   const [nameInput, setNameInput] = useState("");
 
+  const drawsLeft = Math.max(0, MAX_DRAWS_PER_DAY - drawCount);
+
+  const recordDraw = useCallback(() => {
+    setDrawCount((c) => {
+      const next = c + 1;
+      window.localStorage.setItem(DRAWS_STORAGE_KEY, JSON.stringify({ date: dayKey(), count: next }));
+      return next;
+    });
+  }, []);
+
   useEffect(() => {
     const saved = window.localStorage.getItem(NAME_STORAGE_KEY);
     if (saved) {
       setName(saved);
       setNameInput(saved);
+    }
+
+    try {
+      const raw = window.localStorage.getItem(DRAWS_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw) as { date?: string; count?: number };
+        if (parsed.date === dayKey() && typeof parsed.count === "number") {
+          setDrawCount(Math.min(MAX_DRAWS_PER_DAY, Math.max(0, parsed.count)));
+        }
+      }
+    } catch {
+      /* ignore malformed value */
     }
   }, []);
 
