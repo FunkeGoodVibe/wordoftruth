@@ -77,22 +77,23 @@ const Index = () => {
   }, [nameInput]);
 
   const handleDraw = useCallback(() => {
-    if (!revealed) {
+    if (!revealed && drawsLeft > 0) {
       setCurrent(drawRandom());
       setRevealed(true);
-      setDrawCount((c) => c + 1);
+      recordDraw();
     }
-  }, [revealed]);
+  }, [revealed, drawsLeft, recordDraw]);
 
   const handleNew = useCallback(() => {
+    if (drawsLeft <= 0) return;
     // Flip back, then change card after the flip completes
     setRevealed(false);
     window.setTimeout(() => {
       setCurrent((prev) => drawRandom(prev));
       setRevealed(true);
-      setDrawCount((c) => c + 1);
+      recordDraw();
     }, 700);
-  }, []);
+  }, [drawsLeft, recordDraw]);
 
   useEffect(() => {
     document.title = "Daily Affirmations — Draw Your Card";
