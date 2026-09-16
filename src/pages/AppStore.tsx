@@ -123,16 +123,25 @@ const AppStorePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="snap-center shrink-0 w-[240px] sm:w-[280px] rounded-[2rem] overflow-hidden border border-border/60 bg-card/60 backdrop-blur shadow-soft"
+                className="snap-center shrink-0 w-[250px] sm:w-[290px]"
               >
-                <img
-                  src={screen.src}
-                  alt={screen.alt}
-                  loading="lazy"
-                  width={640}
-                  height={1280}
-                  className="w-full h-auto"
-                />
+                {/* Phone frame */}
+                <div className="relative rounded-[2.75rem] border border-border/70 bg-foreground/10 p-[10px] shadow-[var(--shadow-glow)] backdrop-blur">
+                  <div className="relative overflow-hidden rounded-[2.2rem] bg-card">
+                    <div
+                      aria-hidden
+                      className="absolute left-1/2 top-2 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-foreground/70"
+                    />
+                    <img
+                      src={screen.src}
+                      alt={screen.alt}
+                      loading="lazy"
+                      width={640}
+                      height={1280}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
