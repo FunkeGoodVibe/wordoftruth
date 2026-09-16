@@ -33,7 +33,7 @@ const AppDownloadSection = () => {
 
           <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="#"
+              href="/app"
               className="group flex items-center gap-3 rounded-full border border-border/60 bg-background/60 backdrop-blur px-6 h-14 min-w-[200px] shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
             >
               <Apple className="h-6 w-6" strokeWidth={1.6} />
@@ -46,7 +46,7 @@ const AppDownloadSection = () => {
             </a>
 
             <a
-              href="#"
+              href="/app"
               className="group flex items-center gap-3 rounded-full border border-border/60 bg-background/60 backdrop-blur px-6 h-14 min-w-[200px] shadow-soft transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-glow)]"
             >
               <Smartphone className="h-6 w-6" strokeWidth={1.6} />

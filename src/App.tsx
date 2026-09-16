@@ -7,6 +7,7 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
 import CheckoutReturn from "./pages/CheckoutReturn.tsx";
+import AppStorePage from "./pages/AppStore.tsx";
 import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/unsubscribe" element={<Unsubscribe />} />
           <Route path="/checkout/return" element={<CheckoutReturn />} />
+          <Route path="/app" element={<AppStorePage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
