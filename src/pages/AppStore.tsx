@@ -2,14 +2,15 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Apple, ArrowLeft, Heart, Smartphone, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import cardScreen from "@/assets/app-screen-card.jpg";
-import libraryScreen from "@/assets/app-screen-library.jpg";
-import parableScreen from "@/assets/app-screen-parable.jpg";
+import libraryScreen from "@/assets/app-screen-library.png.asset.json";
+import communityScreen from "@/assets/app-screen-community.png.asset.json";
 
 const screens = [
-  { src: cardScreen, alt: "Words of Life daily card, personalised with your name" },
-  { src: libraryScreen, alt: "Browsing the library of 365 Bible promises by theme" },
-  { src: parableScreen, alt: "A personalised parable with you as the faithful one" },
+  { src: libraryScreen.url, alt: "Browsing the library of 365 Bible promises by theme" },
+  {
+    src: communityScreen.url,
+    alt: "Community screen — connect with others who resonate with the same promise",
+  },
 ];
 
 const AppStorePage = () => {
