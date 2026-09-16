@@ -9,6 +9,7 @@ import DonateSection from "@/components/DonateSection";
 import ContactSection from "@/components/ContactSection";
 import FaqSection from "@/components/FaqSection";
 import ParablesSection from "@/components/ParablesSection";
+import CommunitySection from "@/components/CommunitySection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { affirmations, type Affirmation } from "@/data/affirmations";
@@ -251,6 +252,7 @@ const Index = () => {
       </section>
 
       <ImpactSection name={name} />
+      <CommunitySection name={name} />
       <PromisesLibrary name={name} />
       <ParablesSection name={name} />
       <AppDownloadSection />
