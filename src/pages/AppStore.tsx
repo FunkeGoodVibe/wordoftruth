@@ -80,7 +80,7 @@ const AppStorePage = () => {
 
         <section className="mt-16">
           <h2 className="font-display text-2xl sm:text-3xl mb-6">A quiet moment, every day</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
             {screens.map((screen, i) => (
               <motion.div
                 key={screen.alt}
@@ -111,7 +111,9 @@ const AppStorePage = () => {
             guidance and provision — and read 38 parables retold with you as the faithful one.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            No adverts, no noise. Just a still place to begin your day.
+            You can also connect with others in the app who resonate with the same affirmation as
+            you on any given day — a gentle way to share the journey. No adverts, no noise. Just a
+            still place to begin your day.
           </p>
         </section>
 
