@@ -15,6 +15,13 @@ import { Input } from "@/components/ui/input";
 import { affirmations, type Affirmation } from "@/data/affirmations";
 
 const NAME_STORAGE_KEY = "stillpoint:name";
+const DRAWS_STORAGE_KEY = "stillpoint:draws";
+const MAX_DRAWS_PER_DAY = 3;
+
+const dayKey = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${`${d.getMonth() + 1}`.padStart(2, "0")}-${`${d.getDate()}`.padStart(2, "0")}`;
+};
 
 const drawRandom = (exclude?: Affirmation | null): Affirmation => {
   const pool = exclude ? affirmations.filter((a) => a.text !== exclude.text) : affirmations;
@@ -28,11 +35,33 @@ const Index = () => {
   const [name, setName] = useState("");
   const [nameInput, setNameInput] = useState("");
 
+  const drawsLeft = Math.max(0, MAX_DRAWS_PER_DAY - drawCount);
+
+  const recordDraw = useCallback(() => {
+    setDrawCount((c) => {
+      const next = c + 1;
+      window.localStorage.setItem(DRAWS_STORAGE_KEY, JSON.stringify({ date: dayKey(), count: next }));
+      return next;
+    });
+  }, []);
+
   useEffect(() => {
     const saved = window.localStorage.getItem(NAME_STORAGE_KEY);
     if (saved) {
       setName(saved);
       setNameInput(saved);
+    }
+
+    try {
+      const raw = window.localStorage.getItem(DRAWS_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw) as { date?: string; count?: number };
+        if (parsed.date === dayKey() && typeof parsed.count === "number") {
+          setDrawCount(Math.min(MAX_DRAWS_PER_DAY, Math.max(0, parsed.count)));
+        }
+      }
+    } catch {
+      /* ignore malformed value */
     }
   }, []);
 
@@ -48,22 +77,23 @@ const Index = () => {
   }, [nameInput]);
 
   const handleDraw = useCallback(() => {
-    if (!revealed) {
+    if (!revealed && drawsLeft > 0) {
       setCurrent(drawRandom());
       setRevealed(true);
-      setDrawCount((c) => c + 1);
+      recordDraw();
     }
-  }, [revealed]);
+  }, [revealed, drawsLeft, recordDraw]);
 
   const handleNew = useCallback(() => {
+    if (drawsLeft <= 0) return;
     // Flip back, then change card after the flip completes
     setRevealed(false);
     window.setTimeout(() => {
       setCurrent((prev) => drawRandom(prev));
       setRevealed(true);
-      setDrawCount((c) => c + 1);
+      recordDraw();
     }, 700);
-  }, []);
+  }, [drawsLeft, recordDraw]);
 
   useEffect(() => {
     document.title = "Daily Affirmations — Draw Your Card";
@@ -210,21 +240,28 @@ const Index = () => {
         />
 
         {/* Controls */}
-        <div className="mt-10 flex flex-col items-center gap-4 h-16">
+        <div className="mt-10 flex flex-col items-center gap-4 min-h-16">
           {!revealed ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
+              className="flex flex-col items-center gap-3"
             >
               <Button
                 size="lg"
                 onClick={handleDraw}
+                disabled={drawsLeft === 0}
                 className="rounded-full px-8 h-12 text-base font-medium shadow-soft"
               >
                 <Sparkles className="mr-2 h-4 w-4" strokeWidth={2} />
                 Draw your card
               </Button>
+              {drawsLeft === 0 && (
+                <p className="text-xs text-muted-foreground italic text-center max-w-xs">
+                  That's all three cards for today. Come back tomorrow for a fresh word.
+                </p>
+              )}
             </motion.div>
           ) : (
             <motion.div
@@ -233,18 +270,22 @@ const Index = () => {
               transition={{ delay: 1, duration: 0.6 }}
               className="flex flex-col items-center gap-3"
             >
-              <Button
-                variant="ghost"
-                onClick={handleNew}
-                className="rounded-full px-6 h-11 text-sm hover:bg-primary/10"
-              >
-                <Shuffle className="mr-2 h-4 w-4" strokeWidth={1.8} />
-                Draw another
-              </Button>
-              <p className="text-xs text-muted-foreground italic">
-                {drawCount === 1
-                  ? "Sit with it for a moment."
-                  : `${drawCount} cards drawn today`}
+              {drawsLeft > 0 && (
+                <Button
+                  variant="ghost"
+                  onClick={handleNew}
+                  className="rounded-full px-6 h-11 text-sm hover:bg-primary/10"
+                >
+                  <Shuffle className="mr-2 h-4 w-4" strokeWidth={1.8} />
+                  Draw another
+                </Button>
+              )}
+              <p className="text-xs text-muted-foreground italic text-center max-w-xs">
+                {drawsLeft === 0
+                  ? "That's all three cards for today. Come back tomorrow for a fresh word."
+                  : drawCount === 1
+                    ? `Sit with it for a moment. ${drawsLeft} draws left today.`
+                    : `${drawCount} of ${MAX_DRAWS_PER_DAY} cards drawn today.`}
               </p>
             </motion.div>
           )}
