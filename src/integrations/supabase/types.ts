@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      direct_messages: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          read_at: string | null
+          recipient_id: string
+          sender_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          id?: string
+          read_at?: string | null
+          recipient_id: string
+          sender_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          read_at?: string | null
+          recipient_id?: string
+          sender_id?: string
+        }
+        Relationships: []
+      }
       email_send_log: {
         Row: {
           created_at: string
@@ -98,6 +125,75 @@ export type Database = {
           id?: string
           token?: string
           used_at?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          display_name: string
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      promise_comments: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          promise_date: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          id?: string
+          promise_date: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          promise_date?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      resonances: {
+        Row: {
+          created_at: string
+          id: string
+          promise_date: string
+          promise_index: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          promise_date: string
+          promise_index: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          promise_date?: string
+          promise_index?: number
+          user_id?: string
         }
         Relationships: []
       }
