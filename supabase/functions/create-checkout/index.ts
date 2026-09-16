@@ -50,7 +50,7 @@ Deno.serve(async (req) => {
 
     const amount = typeof amountInCents === "number" && amountInCents >= 50
       ? Math.round(amountInCents)
-      : 1000; // default £10.00
+      : 2000; // default £20.00
 
     const env: StripeEnv = environment;
     const stripe = createStripeClient(env);
