@@ -18,6 +18,13 @@ const NAME_STORAGE_KEY = "stillpoint:name";
 const DRAWS_STORAGE_KEY = "stillpoint:draws";
 const MAX_DRAWS_PER_DAY = 3;
 
+// "First letter uppercase, rest lowercase" no matter what was typed.
+const normaliseName = (raw: string) => {
+  const trimmed = raw.trim().slice(0, 40);
+  if (!trimmed) return "";
+  return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
+};
+
 const dayKey = () => {
   const d = new Date();
   return `${d.getFullYear()}-${`${d.getMonth() + 1}`.padStart(2, "0")}-${`${d.getDate()}`.padStart(2, "0")}`;
