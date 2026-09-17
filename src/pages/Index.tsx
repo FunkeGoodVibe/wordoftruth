@@ -55,8 +55,12 @@ const Index = () => {
   useEffect(() => {
     const saved = window.localStorage.getItem(NAME_STORAGE_KEY);
     if (saved) {
-      setName(saved);
-      setNameInput(saved);
+      const normalisedSaved = normaliseName(saved);
+      setName(normalisedSaved);
+      setNameInput(normalisedSaved);
+      if (normalisedSaved !== saved) {
+        window.localStorage.setItem(NAME_STORAGE_KEY, normalisedSaved);
+      }
     }
 
     try {
@@ -70,13 +74,6 @@ const Index = () => {
     } catch {
       /* ignore malformed value */
     }
-  }, []);
-
-  // Normalise to "First letter uppercase, rest lowercase" no matter the input.
-  const normaliseName = useCallback((raw: string) => {
-    const trimmed = raw.trim().slice(0, 40);
-    if (!trimmed) return "";
-    return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
   }, []);
 
   const handleNameSubmit = useCallback((e: React.FormEvent) => {
