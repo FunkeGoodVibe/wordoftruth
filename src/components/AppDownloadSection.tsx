@@ -61,16 +61,11 @@ const AppDownloadSection = ({ name }: { name?: string }) => {
             </a>
           </div>
 
-          <Button asChild className="relative mt-8 rounded-full h-12 px-8 text-base shadow-soft">
-            <Link to={user ? "/community" : "/auth"}>
-              <Users className="mr-2 h-4 w-4" strokeWidth={2} />
-              {user
-                ? name
-                  ? `Open the community, ${name}`
-                  : "Open the community"
-                : "Join the community"}
-            </Link>
-          </Button>
+          <p className="relative mt-8 text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+            {name ? `${name}, in the app you'll also have the option` : "In the app you'll also have the option"}{" "}
+            to connect with others who resonate with the same affirmation — entirely
+            up to you.
+          </p>
         </motion.div>
       </div>
     </section>
