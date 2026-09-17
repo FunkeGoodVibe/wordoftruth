@@ -15,6 +15,7 @@ const THEMES: Array<Affirmation["theme"] | "all"> = [
   "finances",
   "loneliness",
   "health",
+  "work",
 ];
 
 interface PromisesLibraryProps {
