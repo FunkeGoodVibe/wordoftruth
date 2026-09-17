@@ -1,7 +1,15 @@
 export type Affirmation = {
   text: string;
   reference: string;
-  theme: "peace" | "strength" | "love" | "guidance" | "provision";
+  theme:
+    | "peace"
+    | "strength"
+    | "love"
+    | "guidance"
+    | "provision"
+    | "finances"
+    | "loneliness"
+    | "health";
 };
 
 // 100 Bible promises (NIV / ESV paraphrased for brevity where noted)
@@ -115,6 +123,66 @@ export const affirmations: Affirmation[] = [
   { text: "You open your hand and satisfy the desires of every living thing.", reference: "Psalm 145:16", theme: "provision" },
   { text: "Be strong and take heart, all you who hope in the Lord.", reference: "Psalm 31:24", theme: "provision" },
   { text: "Surely your goodness and love will follow me all the days of my life.", reference: "Psalm 23:6", theme: "provision" },
+
+  // ── Finances ──────────────────────────────────────────
+  { text: "And my God will meet all your needs according to the riches of his glory in Christ Jesus.", reference: "Philippians 4:19", theme: "finances" },
+  { text: "Keep your lives free from the love of money and be content with what you have, because God has said, ‘Never will I leave you.’", reference: "Hebrews 13:5", theme: "finances" },
+  { text: "Seek first his kingdom and his righteousness, and all these things will be given to you as well.", reference: "Matthew 6:33", theme: "finances" },
+  { text: "The Lord will open the storehouses of heaven and bless all the work of your hands.", reference: "Deuteronomy 28:12", theme: "finances" },
+  { text: "Remember the Lord your God, for it is he who gives you the ability to produce wealth.", reference: "Deuteronomy 8:18", theme: "finances" },
+  { text: "Give, and it will be given to you — a good measure, pressed down, shaken together and running over.", reference: "Luke 6:38", theme: "finances" },
+  { text: "The plans of the diligent lead to profit as surely as haste leads to poverty.", reference: "Proverbs 21:5", theme: "finances" },
+  { text: "Commit to the Lord whatever you do, and he will establish your plans.", reference: "Proverbs 16:3", theme: "finances" },
+  { text: "Whoever is generous to the poor lends to the Lord, and he will repay him for his deed.", reference: "Proverbs 19:17", theme: "finances" },
+  { text: "A good person leaves an inheritance for their children’s children.", reference: "Proverbs 13:22", theme: "finances" },
+  { text: "I have been young, and now am old, yet I have not seen the righteous forsaken or their children begging bread.", reference: "Psalm 37:25", theme: "finances" },
+  { text: "The Lord is my shepherd; I shall not want.", reference: "Psalm 23:1", theme: "finances" },
+  { text: "He who supplies seed to the sower and bread for food will also supply and increase your store of seed.", reference: "2 Corinthians 9:10", theme: "finances" },
+  { text: "God is able to bless you abundantly, so that in all things at all times you will have all that you need.", reference: "2 Corinthians 9:8", theme: "finances" },
+  { text: "Do not wear yourself out to get rich; have the wisdom to show restraint.", reference: "Proverbs 23:4", theme: "finances" },
+  { text: "The Lord blesses the house of the righteous.", reference: "Proverbs 3:33", theme: "finances" },
+  { text: "Cast all your anxiety on him, because he cares for you.", reference: "1 Peter 5:7", theme: "finances" },
+  { text: "Whoever sows generously will also reap generously.", reference: "2 Corinthians 9:6", theme: "finances" },
+
+  // ── Loneliness ────────────────────────────────────────
+  { text: "I will not leave you as orphans; I will come to you.", reference: "John 14:18", theme: "loneliness" },
+  { text: "God sets the lonely in families, he leads out the prisoners with singing.", reference: "Psalm 68:6", theme: "loneliness" },
+  { text: "The Lord himself goes before you and will be with you; he will never leave you nor forsake you.", reference: "Deuteronomy 31:8", theme: "loneliness" },
+  { text: "And surely I am with you always, to the very end of the age.", reference: "Matthew 28:20", theme: "loneliness" },
+  { text: "Turn to me and be gracious to me, for I am lonely and afflicted.", reference: "Psalm 25:16", theme: "loneliness" },
+  { text: "The Lord is near to all who call on him, to all who call on him in truth.", reference: "Psalm 145:18", theme: "loneliness" },
+  { text: "Even there your hand will guide me, your right hand will hold me fast.", reference: "Psalm 139:10", theme: "loneliness" },
+  { text: "Where can I go from your Spirit? Where can I flee from your presence?", reference: "Psalm 139:7", theme: "loneliness" },
+  { text: "You are the God who sees me.", reference: "Genesis 16:13", theme: "loneliness" },
+  { text: "The Lord is close to the brokenhearted and saves those who are crushed in spirit.", reference: "Psalm 34:18", theme: "loneliness" },
+  { text: "Fear not, for I am with you; do not be dismayed, for I am your God.", reference: "Isaiah 41:10", theme: "loneliness" },
+  { text: "I have loved you with an everlasting love; I have drawn you with unfailing kindness.", reference: "Jeremiah 31:3", theme: "loneliness" },
+  { text: "Two are better than one, for they have a good reward for their toil.", reference: "Ecclesiastes 4:9", theme: "loneliness" },
+  { text: "Carry each other’s burdens, and in this way you will fulfil the law of Christ.", reference: "Galatians 6:2", theme: "loneliness" },
+  { text: "Can a mother forget the baby at her breast? Though she may forget, I will not forget you.", reference: "Isaiah 49:15", theme: "loneliness" },
+  { text: "Though my father and mother forsake me, the Lord will receive me.", reference: "Psalm 27:10", theme: "loneliness" },
+  { text: "Come to me, all you who are weary and burdened, and I will give you rest.", reference: "Matthew 11:28", theme: "loneliness" },
+  { text: "Nothing will be able to separate us from the love of God that is in Christ Jesus our Lord.", reference: "Romans 8:39", theme: "loneliness" },
+
+  // ── Health ────────────────────────────────────────────
+  { text: "He heals the brokenhearted and binds up their wounds.", reference: "Psalm 147:3", theme: "health" },
+  { text: "By his wounds you have been healed.", reference: "1 Peter 2:24", theme: "health" },
+  { text: "Lord my God, I called to you for help, and you healed me.", reference: "Psalm 30:2", theme: "health" },
+  { text: "I will restore you to health and heal your wounds, declares the Lord.", reference: "Jeremiah 30:17", theme: "health" },
+  { text: "Heal me, Lord, and I will be healed; save me and I will be saved.", reference: "Jeremiah 17:14", theme: "health" },
+  { text: "He forgives all my sins and heals all my diseases.", reference: "Psalm 103:3", theme: "health" },
+  { text: "A cheerful heart is good medicine, but a crushed spirit dries up the bones.", reference: "Proverbs 17:22", theme: "health" },
+  { text: "My flesh and my heart may fail, but God is the strength of my heart and my portion for ever.", reference: "Psalm 73:26", theme: "health" },
+  { text: "The Lord sustains them on their sickbed and restores them from their bed of illness.", reference: "Psalm 41:3", theme: "health" },
+  { text: "He gives strength to the weary and increases the power of the weak.", reference: "Isaiah 40:29", theme: "health" },
+  { text: "Those who hope in the Lord will renew their strength; they will run and not grow weary.", reference: "Isaiah 40:31", theme: "health" },
+  { text: "Dear friend, I pray that you may enjoy good health and that all may go well with you.", reference: "3 John 1:2", theme: "health" },
+  { text: "Do you not know that your bodies are temples of the Holy Spirit?", reference: "1 Corinthians 6:19", theme: "health" },
+  { text: "Pleasant words are a honeycomb, sweet to the soul and healing to the bones.", reference: "Proverbs 16:24", theme: "health" },
+  { text: "Is anyone among you sick? Let them pray, and the prayer offered in faith will make the sick person well.", reference: "James 5:14-15", theme: "health" },
+  { text: "The sun of righteousness will rise with healing in its rays.", reference: "Malachi 4:2", theme: "health" },
+  { text: "Trust in the Lord and do good; this will bring health to your body and nourishment to your bones.", reference: "Proverbs 3:5-8", theme: "health" },
+  { text: "He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain.", reference: "Revelation 21:4", theme: "health" },
 ];
 
 export const themeLabel: Record<Affirmation["theme"], string> = {
@@ -123,4 +191,7 @@ export const themeLabel: Record<Affirmation["theme"], string> = {
   love: "Love",
   guidance: "Guidance",
   provision: "Provision",
+  finances: "Finances",
+  loneliness: "Loneliness",
+  health: "Health",
 };
