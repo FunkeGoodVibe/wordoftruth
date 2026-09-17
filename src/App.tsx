@@ -8,10 +8,7 @@ import NotFound from "./pages/NotFound.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
 import CheckoutReturn from "./pages/CheckoutReturn.tsx";
 import AppStorePage from "./pages/AppStore.tsx";
-import AuthPage from "./pages/Auth.tsx";
-import Community from "./pages/Community.tsx";
 import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
-import { AuthProvider } from "@/hooks/useAuth";
 
 const queryClient = new QueryClient();
 
