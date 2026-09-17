@@ -18,19 +18,15 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AuthProvider>
-          <PaymentTestModeBanner />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/unsubscribe" element={<Unsubscribe />} />
-            <Route path="/checkout/return" element={<CheckoutReturn />} />
-            <Route path="/app" element={<AppStorePage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AuthProvider>
+        <PaymentTestModeBanner />
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/unsubscribe" element={<Unsubscribe />} />
+          <Route path="/checkout/return" element={<CheckoutReturn />} />
+          <Route path="/app" element={<AppStorePage />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
