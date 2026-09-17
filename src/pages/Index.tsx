@@ -18,6 +18,13 @@ const NAME_STORAGE_KEY = "stillpoint:name";
 const DRAWS_STORAGE_KEY = "stillpoint:draws";
 const MAX_DRAWS_PER_DAY = 3;
 
+// "First letter uppercase, rest lowercase" no matter what was typed.
+const normaliseName = (raw: string) => {
+  const trimmed = raw.trim().slice(0, 40);
+  if (!trimmed) return "";
+  return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
+};
+
 const dayKey = () => {
   const d = new Date();
   return `${d.getFullYear()}-${`${d.getMonth() + 1}`.padStart(2, "0")}-${`${d.getDate()}`.padStart(2, "0")}`;
@@ -48,8 +55,12 @@ const Index = () => {
   useEffect(() => {
     const saved = window.localStorage.getItem(NAME_STORAGE_KEY);
     if (saved) {
-      setName(saved);
-      setNameInput(saved);
+      const normalisedSaved = normaliseName(saved);
+      setName(normalisedSaved);
+      setNameInput(normalisedSaved);
+      if (normalisedSaved !== saved) {
+        window.localStorage.setItem(NAME_STORAGE_KEY, normalisedSaved);
+      }
     }
 
     try {
@@ -67,14 +78,14 @@ const Index = () => {
 
   const handleNameSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
-    const trimmed = nameInput.trim().slice(0, 40);
-    setName(trimmed);
-    if (trimmed) {
-      window.localStorage.setItem(NAME_STORAGE_KEY, trimmed);
+    const normalised = normaliseName(nameInput);
+    setName(normalised);
+    if (normalised) {
+      window.localStorage.setItem(NAME_STORAGE_KEY, normalised);
     } else {
       window.localStorage.removeItem(NAME_STORAGE_KEY);
     }
-  }, [nameInput]);
+  }, [nameInput, normaliseName]);
 
   const handleDraw = useCallback(() => {
     if (!revealed && drawsLeft > 0) {
