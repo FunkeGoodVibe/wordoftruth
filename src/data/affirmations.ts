@@ -9,7 +9,8 @@ export type Affirmation = {
     | "provision"
     | "finances"
     | "loneliness"
-    | "health";
+    | "health"
+    | "work";
 };
 
 // 100 Bible promises (NIV / ESV paraphrased for brevity where noted)
@@ -183,6 +184,26 @@ export const affirmations: Affirmation[] = [
   { text: "The sun of righteousness will rise with healing in its rays.", reference: "Malachi 4:2", theme: "health" },
   { text: "Trust in the Lord and do good; this will bring health to your body and nourishment to your bones.", reference: "Proverbs 3:5-8", theme: "health" },
   { text: "He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain.", reference: "Revelation 21:4", theme: "health" },
+
+  // ── Work ──────────────────────────────────────────────
+  { text: "Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.", reference: "Colossians 3:23", theme: "work" },
+  { text: "Commit to the Lord whatever you do, and he will establish your plans.", reference: "Proverbs 16:3", theme: "work" },
+  { text: "May the favour of the Lord our God rest on us; establish the work of our hands.", reference: "Psalm 90:17", theme: "work" },
+  { text: "The Lord was with Joseph so that he prospered, and he lived in the house of his master. His master saw that the Lord was with him and that the Lord gave him success in everything he did.", reference: "Genesis 39:2-3", theme: "work" },
+  { text: "Do you see someone skilled in their work? They will serve before kings.", reference: "Proverbs 22:29", theme: "work" },
+  { text: "That each of them may eat and drink, and find satisfaction in all their toil — this is the gift of God.", reference: "Ecclesiastes 3:13", theme: "work" },
+  { text: "Whatever you do, whether in word or deed, do it all in the name of the Lord Jesus.", reference: "Colossians 3:17", theme: "work" },
+  { text: "All hard work brings a profit, but mere talk leads only to poverty.", reference: "Proverbs 14:23", theme: "work" },
+  { text: "Those who work their land will have abundant food, but those who chase fantasies have no sense.", reference: "Proverbs 12:11", theme: "work" },
+  { text: "The Lord will open the storehouses of heaven and bless all the work of your hands.", reference: "Deuteronomy 28:12", theme: "work" },
+  { text: "Make it your ambition to lead a quiet life: You should mind your own business and work with your hands, so that your daily life may win the respect of outsiders.", reference: "1 Thessalonians 4:11-12", theme: "work" },
+  { text: "You will eat the fruit of your labour; blessings and prosperity will be yours.", reference: "Psalm 128:2", theme: "work" },
+  { text: "My presence will go with you, and I will give you rest.", reference: "Exodus 33:14", theme: "work" },
+  { text: "A sluggard's appetite is never filled, but the desires of the diligent are fully satisfied.", reference: "Proverbs 13:4", theme: "work" },
+  { text: "Sweet is the sleep of a labourer, whether they eat little or much.", reference: "Ecclesiastes 5:12", theme: "work" },
+  { text: "But the Lord is faithful, and he will strengthen you and guard you from the evil one.", reference: "2 Thessalonians 3:3", theme: "work" },
+  { text: "Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.", reference: "Galatians 6:9", theme: "work" },
+  { text: "For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.", reference: "Ephesians 2:10", theme: "work" },
 ];
 
 export const themeLabel: Record<Affirmation["theme"], string> = {
@@ -194,4 +215,5 @@ export const themeLabel: Record<Affirmation["theme"], string> = {
   finances: "Finances",
   loneliness: "Loneliness",
   health: "Health",
+  work: "Work",
 };
