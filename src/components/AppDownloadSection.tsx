@@ -1,11 +1,8 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Apple, Smartphone, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useAuth } from "@/hooks/useAuth";
+import { Apple, Smartphone } from "lucide-react";
 
 const AppDownloadSection = ({ name }: { name?: string }) => {
-  const { user } = useAuth();
+
 
   return (
     <section className="relative z-10 px-6 sm:px-12 py-20 sm:py-28">
