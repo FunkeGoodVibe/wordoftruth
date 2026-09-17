@@ -42,7 +42,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     const stored = window.localStorage.getItem(NAME_STORAGE_KEY);
-    const display_name = (stored || fallbackName || "Friend").slice(0, 40);
+    const rawName = stored || fallbackName || "Friend";
+    const display_name =
+      (rawName.charAt(0).toUpperCase() + rawName.slice(1).toLowerCase()).slice(0, 40);
     const { data: created } = await supabase
       .from("profiles")
       .insert({ id: userId, display_name })
