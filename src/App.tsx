@@ -8,10 +8,7 @@ import NotFound from "./pages/NotFound.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
 import CheckoutReturn from "./pages/CheckoutReturn.tsx";
 import AppStorePage from "./pages/AppStore.tsx";
-import AuthPage from "./pages/Auth.tsx";
-import Community from "./pages/Community.tsx";
 import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
-import { AuthProvider } from "@/hooks/useAuth";
 
 const queryClient = new QueryClient();
 
@@ -21,19 +18,15 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AuthProvider>
-          <PaymentTestModeBanner />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/unsubscribe" element={<Unsubscribe />} />
-            <Route path="/checkout/return" element={<CheckoutReturn />} />
-            <Route path="/app" element={<AppStorePage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AuthProvider>
+        <PaymentTestModeBanner />
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/unsubscribe" element={<Unsubscribe />} />
+          <Route path="/checkout/return" element={<CheckoutReturn />} />
+          <Route path="/app" element={<AppStorePage />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
