@@ -65,16 +65,23 @@ const Index = () => {
     }
   }, []);
 
+  // Normalise to "First letter uppercase, rest lowercase" no matter the input.
+  const normaliseName = useCallback((raw: string) => {
+    const trimmed = raw.trim().slice(0, 40);
+    if (!trimmed) return "";
+    return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
+  }, []);
+
   const handleNameSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
-    const trimmed = nameInput.trim().slice(0, 40);
-    setName(trimmed);
-    if (trimmed) {
-      window.localStorage.setItem(NAME_STORAGE_KEY, trimmed);
+    const normalised = normaliseName(nameInput);
+    setName(normalised);
+    if (normalised) {
+      window.localStorage.setItem(NAME_STORAGE_KEY, normalised);
     } else {
       window.localStorage.removeItem(NAME_STORAGE_KEY);
     }
-  }, [nameInput]);
+  }, [nameInput, normaliseName]);
 
   const handleDraw = useCallback(() => {
     if (!revealed && drawsLeft > 0) {
