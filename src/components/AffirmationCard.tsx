@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import ListenButton from "@/components/ListenButton";
 import type { Affirmation } from "@/data/affirmations";
 import { themeLabel } from "@/data/affirmations";
 
@@ -136,10 +135,6 @@ const AffirmationCard = ({ revealed, affirmation, onClick, name }: Props) => {
                   className="flex flex-col items-center gap-3"
                 >
                   <Sparkles className="h-4 w-4 text-primary/70" strokeWidth={1.5} />
-                  <ListenButton
-                    promise={{ text: affirmation.text, reference: affirmation.reference }}
-                    label
-                  />
                   <p className="text-xs tracking-widest uppercase text-muted-foreground">
                     a promise for you
                   </p>
