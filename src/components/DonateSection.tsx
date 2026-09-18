@@ -32,10 +32,21 @@ const DonateSection = () => {
           The app is yours, freely. If it has met you in a quiet moment, consider a £20 donation.
         </p>
         <div className="pt-2">
-          <Button size="lg" onClick={handleDonate} className="rounded-full px-8 h-12 text-base font-medium shadow-soft">
+          <Button
+            size="lg"
+            onClick={handleDonate}
+            disabled={!paymentsReady}
+            className="rounded-full px-8 h-12 text-base font-medium shadow-soft"
+          >
             <Heart className="mr-2 h-4 w-4" strokeWidth={2} />
             Donate £20
           </Button>
+          {!paymentsReady && (
+            <p className="mt-4 text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed">
+              Donations aren't open just yet — they'll go live as soon as the payment setup is
+              complete.
+            </p>
+          )}
         </div>
       </motion.div>
 
