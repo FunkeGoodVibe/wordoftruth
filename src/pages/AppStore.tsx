@@ -17,7 +17,7 @@ const screens = [
     src: communityNetworkScreen,
     alt: "Community screen — people gathered around today's shared promise",
   },
-  { src: libraryScreen, alt: "Browsing the library of 365 Bible promises by theme" },
+  { src: libraryScreen, alt: "Affirmations screen — browsing Bible promises by theme" },
 ];
 
 const appInfo = [
