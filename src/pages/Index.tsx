@@ -9,6 +9,7 @@ import DonateSection from "@/components/DonateSection";
 import ContactSection from "@/components/ContactSection";
 import FaqSection from "@/components/FaqSection";
 import ParablesSection from "@/components/ParablesSection";
+import ListenButton from "@/components/ListenButton";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -281,6 +282,12 @@ const Index = () => {
               transition={{ delay: 1, duration: 0.6 }}
               className="flex flex-col items-center gap-3"
             >
+              {current && (
+                <ListenButton
+                  promise={{ text: current.text, reference: current.reference }}
+                  label
+                />
+              )}
               {drawsLeft > 0 && (
                 <Button
                   variant="ghost"
