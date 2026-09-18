@@ -61,12 +61,22 @@ Deno.serve(async (req) => {
     if (!lovableApiKey) return json({ error: "LOVABLE_API_KEY is not configured" }, 500);
 
     const supabase = createClient(supabaseUrl, serviceKey);
-    const path = `${await slug(`${text}|${reference}`)}.wav`;
-    const publicUrl = supabase.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
+    const name = `${await slug(`${text}|${reference}`)}.wav`;
+    const path = name;
+
+    const signUrl = async () => {
+      const { data, error } = await supabase.storage
+        .from(BUCKET)
+        .createSignedUrl(path, 60 * 60 * 12);
+      if (error || !data?.signedUrl) throw new Error(error?.message ?? "Could not sign the audio URL");
+      return data.signedUrl;
+    };
 
     // Already generated? Serve the cached recording.
-    const head = await fetch(publicUrl, { method: "HEAD" });
-    if (head.ok) return json({ url: publicUrl, cached: true });
+    const { data: existing } = await supabase.storage.from(BUCKET).list("", { search: name });
+    if (existing?.some((f) => f.name === name)) {
+      return json({ url: await signUrl(), cached: true });
+    }
 
     const spoken = reference
       ? `Say gently, warmly and slowly: ${text} ... ${reference}`
