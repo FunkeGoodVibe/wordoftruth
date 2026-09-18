@@ -42,8 +42,8 @@ const ImpactSection = ({ name }: ImpactSectionProps) => {
     },
     {
       value: "📱",
-      label: "Available Now",
-      sub: "On the App Store and Google Play",
+      label: "In Development",
+      sub: "Coming soon to the App Store and Google Play",
       teaserLabel: "Get the app",
       teaser: (
         <div className="flex flex-col gap-2">
