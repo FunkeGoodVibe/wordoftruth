@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Apple, Smartphone } from "lucide-react";
+import LaunchWaitlistForm from "@/components/LaunchWaitlistForm";
 
 const AppDownloadSection = ({ name }: { name?: string }) => {
 
@@ -59,6 +60,10 @@ const AppDownloadSection = ({ name }: { name?: string }) => {
                 <div className="text-sm font-medium">Google Play</div>
               </div>
             </a>
+          </div>
+
+          <div className="relative max-w-xl mx-auto">
+            <LaunchWaitlistForm />
           </div>
 
           <p className="relative mt-8 text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
