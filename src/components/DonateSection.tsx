@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import { Heart, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useStripeCheckout } from "@/hooks/useStripeCheckout";
+import { isPaymentsConfigured } from "@/lib/stripe";
 
 const DonateSection = () => {
   const { openCheckout, closeCheckout, isOpen, checkoutElement } = useStripeCheckout();
+  const paymentsReady = isPaymentsConfigured();
 
   const handleDonate = () => {
     openCheckout({
