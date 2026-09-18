@@ -9,25 +9,28 @@ import Unsubscribe from "./pages/Unsubscribe.tsx";
 import CheckoutReturn from "./pages/CheckoutReturn.tsx";
 import AppStorePage from "./pages/AppStore.tsx";
 import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
+import { PromiseAudioProvider } from "@/hooks/usePromiseAudio";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <PaymentTestModeBanner />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/unsubscribe" element={<Unsubscribe />} />
-          <Route path="/checkout/return" element={<CheckoutReturn />} />
-          <Route path="/app" element={<AppStorePage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <PromiseAudioProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <PaymentTestModeBanner />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/unsubscribe" element={<Unsubscribe />} />
+            <Route path="/checkout/return" element={<CheckoutReturn />} />
+            <Route path="/app" element={<AppStorePage />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </PromiseAudioProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

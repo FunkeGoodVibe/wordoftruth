@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ListenButton from "@/components/ListenButton";
 import { affirmations, themeLabel, type Affirmation } from "@/data/affirmations";
 
 const PAGE_SIZE = 9;
@@ -122,9 +123,12 @@ const PromisesLibrary = ({ name }: PromisesLibraryProps) => {
                 <p className="font-display text-lg leading-snug text-balance text-card-foreground">
                   &ldquo;{a.text}&rdquo;
                 </p>
-                <p className="text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground pt-4">
-                  — {a.reference}
-                </p>
+                <div className="flex items-center justify-between gap-3 pt-4">
+                  <p className="text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground">
+                    — {a.reference}
+                  </p>
+                  <ListenButton promise={{ text: a.text, reference: a.reference }} />
+                </div>
               </article>
             ))}
           </motion.div>

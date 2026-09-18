@@ -124,7 +124,7 @@ Deno.serve(async (req) => {
       return json({ error: "Could not save the audio." }, 500);
     }
 
-    return json({ url: publicUrl, cached: false });
+    return json({ url: await signUrl(), cached: false });
   } catch (e) {
     console.error("speak-promise error:", e);
     return json({ error: e instanceof Error ? e.message : "Unknown error" }, 500);
