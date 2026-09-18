@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      app_launch_waitlist: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          wants_testing: boolean
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          wants_testing?: boolean
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          wants_testing?: boolean
+        }
+        Relationships: []
+      }
       direct_messages: {
         Row: {
           body: string
