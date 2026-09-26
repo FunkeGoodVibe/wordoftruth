@@ -85,7 +85,33 @@ const Index = () => {
     } catch {
       /* ignore malformed value */
     }
+
+    try {
+      const rawFeeling = window.localStorage.getItem(FEELING_STORAGE_KEY);
+      if (rawFeeling) {
+        const parsedFeeling = JSON.parse(rawFeeling) as { date?: string; text?: string };
+        if (parsedFeeling.date === dayKey() && typeof parsedFeeling.text === "string") {
+          setSavedFeeling(parsedFeeling.text);
+          setFeeling(parsedFeeling.text);
+          setFeelingSaved(true);
+        }
+      }
+    } catch {
+      /* ignore malformed value */
+    }
   }, []);
+
+  const handleFeelingSave = useCallback(() => {
+    const trimmed = feeling.trim().slice(0, 300);
+    setSavedFeeling(trimmed);
+    setFeeling(trimmed);
+    setFeelingSaved(true);
+    if (trimmed) {
+      window.localStorage.setItem(FEELING_STORAGE_KEY, JSON.stringify({ date: dayKey(), text: trimmed }));
+    } else {
+      window.localStorage.removeItem(FEELING_STORAGE_KEY);
+    }
+  }, [feeling]);
 
   const handleNameSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
@@ -96,7 +122,7 @@ const Index = () => {
     } else {
       window.localStorage.removeItem(NAME_STORAGE_KEY);
     }
-  }, [nameInput, normaliseName]);
+  }, [nameInput]);
 
   const handleDraw = useCallback(() => {
     if (!revealed && drawsLeft > 0) {
