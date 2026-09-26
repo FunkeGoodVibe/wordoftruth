@@ -96,8 +96,15 @@ export function PromiseAudioProvider({ children }: { children: React.ReactNode }
   return <PromiseAudioContext.Provider value={value}>{children}</PromiseAudioContext.Provider>;
 }
 
+// Safe fallback so a missing provider (e.g. after a hot reload) never blanks the page.
+const fallback: PromiseAudioValue = {
+  activeKey: null,
+  loadingKey: null,
+  errorKey: null,
+  toggle: () => {},
+  keyFor: promiseKey,
+};
+
 export function usePromiseAudio() {
-  const ctx = useContext(PromiseAudioContext);
-  if (!ctx) throw new Error("usePromiseAudio must be used within PromiseAudioProvider");
-  return ctx;
+  return useContext(PromiseAudioContext) ?? fallback;
 }

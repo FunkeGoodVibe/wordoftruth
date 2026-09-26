@@ -13,7 +13,9 @@ import ListenButton from "@/components/ListenButton";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { affirmations, type Affirmation } from "@/data/affirmations";
+import { themesForFeeling } from "@/lib/feelingMatch";
 
 const NAME_STORAGE_KEY = "stillpoint:name";
 const DRAWS_STORAGE_KEY = "stillpoint:draws";
@@ -31,8 +33,11 @@ const dayKey = () => {
   return `${d.getFullYear()}-${`${d.getMonth() + 1}`.padStart(2, "0")}-${`${d.getDate()}`.padStart(2, "0")}`;
 };
 
-const drawRandom = (exclude?: Affirmation | null): Affirmation => {
-  const pool = exclude ? affirmations.filter((a) => a.text !== exclude.text) : affirmations;
+const drawRandom = (exclude?: Affirmation | null, feeling = ""): Affirmation => {
+  const themes = themesForFeeling(feeling);
+  let pool = themes.length ? affirmations.filter((a) => themes.includes(a.theme)) : affirmations;
+  if (exclude) pool = pool.filter((a) => a.text !== exclude.text);
+  if (!pool.length) pool = affirmations;
   return pool[Math.floor(Math.random() * pool.length)];
 };
 
@@ -42,6 +47,7 @@ const Index = () => {
   const [drawCount, setDrawCount] = useState(0);
   const [name, setName] = useState("");
   const [nameInput, setNameInput] = useState("");
+  const [feeling, setFeeling] = useState("");
 
   const drawsLeft = Math.max(0, MAX_DRAWS_PER_DAY - drawCount);
 
@@ -90,22 +96,22 @@ const Index = () => {
 
   const handleDraw = useCallback(() => {
     if (!revealed && drawsLeft > 0) {
-      setCurrent(drawRandom());
+      setCurrent(drawRandom(null, feeling));
       setRevealed(true);
       recordDraw();
     }
-  }, [revealed, drawsLeft, recordDraw]);
+  }, [revealed, drawsLeft, recordDraw, feeling]);
 
   const handleNew = useCallback(() => {
     if (drawsLeft <= 0) return;
     // Flip back, then change card after the flip completes
     setRevealed(false);
     window.setTimeout(() => {
-      setCurrent((prev) => drawRandom(prev));
+      setCurrent((prev) => drawRandom(prev, feeling));
       setRevealed(true);
       recordDraw();
     }, 700);
-  }, [drawsLeft, recordDraw]);
+  }, [drawsLeft, recordDraw, feeling]);
 
   useEffect(() => {
     document.title = "Daily Affirmations — Draw Your Card";
@@ -242,6 +248,23 @@ const Index = () => {
             </motion.form>
           </motion.div>
 
+          <div className="max-w-sm mx-auto pt-4 space-y-2 text-left">
+            <label htmlFor="feeling" className="block text-[11px] uppercase tracking-[0.3em] text-muted-foreground text-center">
+              {name ? `How are you feeling today, ${name}?` : "How are you feeling today?"}
+            </label>
+            <Textarea
+              id="feeling"
+              value={feeling}
+              onChange={(e) => setFeeling(e.target.value.slice(0, 300))}
+              maxLength={300}
+              rows={2}
+              placeholder="e.g. a little anxious about work…"
+              className="rounded-2xl bg-background/80 backdrop-blur border-primary/30 resize-none focus-visible:ring-primary/40"
+            />
+            <p className="text-xs text-muted-foreground italic text-center">
+              Your card will be chosen for how you feel.
+            </p>
+          </div>
         </motion.div>
 
         <AffirmationCard
