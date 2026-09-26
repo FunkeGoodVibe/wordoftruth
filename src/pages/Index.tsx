@@ -137,11 +137,11 @@ const Index = () => {
     // Flip back, then change card after the flip completes
     setRevealed(false);
     window.setTimeout(() => {
-      setCurrent((prev) => drawRandom(prev, feeling));
+      setCurrent((prev) => drawRandom(prev, savedFeeling));
       setRevealed(true);
       recordDraw();
     }, 700);
-  }, [drawsLeft, recordDraw, feeling]);
+  }, [drawsLeft, recordDraw, savedFeeling]);
 
   useEffect(() => {
     document.title = "Daily Affirmations — Draw Your Card";
