@@ -285,15 +285,48 @@ const Index = () => {
             <Textarea
               id="feeling"
               value={feeling}
-              onChange={(e) => setFeeling(e.target.value.slice(0, 300))}
+              onChange={(e) => {
+                setFeeling(e.target.value.slice(0, 300));
+                if (feelingSaved) setFeelingSaved(false);
+              }}
               maxLength={300}
               rows={2}
               placeholder="e.g. a little anxious about work…"
               className="rounded-2xl bg-background/80 backdrop-blur border-primary/30 resize-none focus-visible:ring-primary/40"
             />
-            <p className="text-xs text-muted-foreground italic text-center">
-              Your card will be chosen for how you feel.
-            </p>
+            <div className="flex justify-center pt-1">
+              <Button
+                type="button"
+                size="sm"
+                onClick={handleFeelingSave}
+                disabled={!feeling.trim()}
+                className="rounded-full px-6 h-9 text-sm shadow-soft"
+              >
+                {feelingSaved && savedFeeling === feeling.trim() ? "Saved ✓" : "Save"}
+              </Button>
+            </div>
+            {feelingSaved && savedFeeling ? (
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="rounded-2xl bg-primary/10 border border-primary/25 px-4 py-3 text-center"
+                role="status"
+              >
+                <p className="text-sm leading-relaxed">
+                  <span className="font-display italic gradient-text">
+                    {name ? `Thank you, ${name}. ` : "Thank you. "}
+                  </span>
+                  <span className="text-muted-foreground">
+                    The card you draw will be chosen to relate to how you feel today.
+                  </span>
+                </p>
+              </motion.div>
+            ) : (
+              <p className="text-xs text-muted-foreground italic text-center">
+                Save how you feel, and your card will be chosen for it.
+              </p>
+            )}
           </div>
         </motion.div>
 
