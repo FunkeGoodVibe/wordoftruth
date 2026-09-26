@@ -126,11 +126,11 @@ const Index = () => {
 
   const handleDraw = useCallback(() => {
     if (!revealed && drawsLeft > 0) {
-      setCurrent(drawRandom(null, feeling));
+      setCurrent(drawRandom(null, savedFeeling));
       setRevealed(true);
       recordDraw();
     }
-  }, [revealed, drawsLeft, recordDraw, feeling]);
+  }, [revealed, drawsLeft, recordDraw, savedFeeling]);
 
   const handleNew = useCallback(() => {
     if (drawsLeft <= 0) return;
