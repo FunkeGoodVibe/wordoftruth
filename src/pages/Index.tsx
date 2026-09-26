@@ -19,6 +19,7 @@ import { themesForFeeling } from "@/lib/feelingMatch";
 
 const NAME_STORAGE_KEY = "stillpoint:name";
 const DRAWS_STORAGE_KEY = "stillpoint:draws";
+const FEELING_STORAGE_KEY = "stillpoint:feeling";
 const MAX_DRAWS_PER_DAY = 3;
 
 // "First letter uppercase, rest lowercase" no matter what was typed.
@@ -34,7 +35,8 @@ const dayKey = () => {
 };
 
 const drawRandom = (exclude?: Affirmation | null, feeling = ""): Affirmation => {
-  const themes = themesForFeeling(feeling);
+  const trimmedFeeling = feeling.trim();
+  const themes = themesForFeeling(trimmedFeeling);
   let pool = themes.length ? affirmations.filter((a) => themes.includes(a.theme)) : affirmations;
   if (exclude) pool = pool.filter((a) => a.text !== exclude.text);
   if (!pool.length) pool = affirmations;
