@@ -19,6 +19,7 @@ import { themesForFeeling } from "@/lib/feelingMatch";
 
 const NAME_STORAGE_KEY = "stillpoint:name";
 const DRAWS_STORAGE_KEY = "stillpoint:draws";
+const FEELING_STORAGE_KEY = "stillpoint:feeling";
 const MAX_DRAWS_PER_DAY = 3;
 
 // "First letter uppercase, rest lowercase" no matter what was typed.
@@ -34,7 +35,8 @@ const dayKey = () => {
 };
 
 const drawRandom = (exclude?: Affirmation | null, feeling = ""): Affirmation => {
-  const themes = themesForFeeling(feeling);
+  const trimmedFeeling = feeling.trim();
+  const themes = themesForFeeling(trimmedFeeling);
   let pool = themes.length ? affirmations.filter((a) => themes.includes(a.theme)) : affirmations;
   if (exclude) pool = pool.filter((a) => a.text !== exclude.text);
   if (!pool.length) pool = affirmations;
@@ -48,6 +50,8 @@ const Index = () => {
   const [name, setName] = useState("");
   const [nameInput, setNameInput] = useState("");
   const [feeling, setFeeling] = useState("");
+  const [savedFeeling, setSavedFeeling] = useState("");
+  const [feelingSaved, setFeelingSaved] = useState(false);
 
   const drawsLeft = Math.max(0, MAX_DRAWS_PER_DAY - drawCount);
 
@@ -81,7 +85,33 @@ const Index = () => {
     } catch {
       /* ignore malformed value */
     }
+
+    try {
+      const rawFeeling = window.localStorage.getItem(FEELING_STORAGE_KEY);
+      if (rawFeeling) {
+        const parsedFeeling = JSON.parse(rawFeeling) as { date?: string; text?: string };
+        if (parsedFeeling.date === dayKey() && typeof parsedFeeling.text === "string") {
+          setSavedFeeling(parsedFeeling.text);
+          setFeeling(parsedFeeling.text);
+          setFeelingSaved(true);
+        }
+      }
+    } catch {
+      /* ignore malformed value */
+    }
   }, []);
+
+  const handleFeelingSave = useCallback(() => {
+    const trimmed = feeling.trim().slice(0, 300);
+    setSavedFeeling(trimmed);
+    setFeeling(trimmed);
+    setFeelingSaved(true);
+    if (trimmed) {
+      window.localStorage.setItem(FEELING_STORAGE_KEY, JSON.stringify({ date: dayKey(), text: trimmed }));
+    } else {
+      window.localStorage.removeItem(FEELING_STORAGE_KEY);
+    }
+  }, [feeling]);
 
   const handleNameSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
@@ -92,26 +122,26 @@ const Index = () => {
     } else {
       window.localStorage.removeItem(NAME_STORAGE_KEY);
     }
-  }, [nameInput, normaliseName]);
+  }, [nameInput]);
 
   const handleDraw = useCallback(() => {
     if (!revealed && drawsLeft > 0) {
-      setCurrent(drawRandom(null, feeling));
+      setCurrent(drawRandom(null, savedFeeling));
       setRevealed(true);
       recordDraw();
     }
-  }, [revealed, drawsLeft, recordDraw, feeling]);
+  }, [revealed, drawsLeft, recordDraw, savedFeeling]);
 
   const handleNew = useCallback(() => {
     if (drawsLeft <= 0) return;
     // Flip back, then change card after the flip completes
     setRevealed(false);
     window.setTimeout(() => {
-      setCurrent((prev) => drawRandom(prev, feeling));
+      setCurrent((prev) => drawRandom(prev, savedFeeling));
       setRevealed(true);
       recordDraw();
     }, 700);
-  }, [drawsLeft, recordDraw, feeling]);
+  }, [drawsLeft, recordDraw, savedFeeling]);
 
   useEffect(() => {
     document.title = "Daily Affirmations — Draw Your Card";
@@ -255,15 +285,48 @@ const Index = () => {
             <Textarea
               id="feeling"
               value={feeling}
-              onChange={(e) => setFeeling(e.target.value.slice(0, 300))}
+              onChange={(e) => {
+                setFeeling(e.target.value.slice(0, 300));
+                if (feelingSaved) setFeelingSaved(false);
+              }}
               maxLength={300}
               rows={2}
               placeholder="e.g. a little anxious about work…"
               className="rounded-2xl bg-background/80 backdrop-blur border-primary/30 resize-none focus-visible:ring-primary/40"
             />
-            <p className="text-xs text-muted-foreground italic text-center">
-              Your card will be chosen for how you feel.
-            </p>
+            <div className="flex justify-center pt-1">
+              <Button
+                type="button"
+                size="sm"
+                onClick={handleFeelingSave}
+                disabled={!feeling.trim()}
+                className="rounded-full px-6 h-9 text-sm shadow-soft"
+              >
+                {feelingSaved && savedFeeling === feeling.trim() ? "Saved ✓" : "Save"}
+              </Button>
+            </div>
+            {feelingSaved && savedFeeling ? (
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="rounded-2xl bg-primary/10 border border-primary/25 px-4 py-3 text-center"
+                role="status"
+              >
+                <p className="text-sm leading-relaxed">
+                  <span className="font-display italic gradient-text">
+                    {name ? `Thank you, ${name}. ` : "Thank you. "}
+                  </span>
+                  <span className="text-muted-foreground">
+                    The card you draw will be chosen to relate to how you feel today.
+                  </span>
+                </p>
+              </motion.div>
+            ) : (
+              <p className="text-xs text-muted-foreground italic text-center">
+                Save how you feel, and your card will be chosen for it.
+              </p>
+            )}
           </div>
         </motion.div>
 
