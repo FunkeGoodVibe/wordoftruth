@@ -50,6 +50,8 @@ const Index = () => {
   const [name, setName] = useState("");
   const [nameInput, setNameInput] = useState("");
   const [feeling, setFeeling] = useState("");
+  const [savedFeeling, setSavedFeeling] = useState("");
+  const [feelingSaved, setFeelingSaved] = useState(false);
 
   const drawsLeft = Math.max(0, MAX_DRAWS_PER_DAY - drawCount);
 
