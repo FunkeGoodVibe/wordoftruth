@@ -101,6 +101,18 @@ const Index = () => {
     }
   }, []);
 
+  const handleFeelingSave = useCallback(() => {
+    const trimmed = feeling.trim().slice(0, 300);
+    setSavedFeeling(trimmed);
+    setFeeling(trimmed);
+    setFeelingSaved(true);
+    if (trimmed) {
+      window.localStorage.setItem(FEELING_STORAGE_KEY, JSON.stringify({ date: dayKey(), text: trimmed }));
+    } else {
+      window.localStorage.removeItem(FEELING_STORAGE_KEY);
+    }
+  }, [feeling]);
+
   // The name updates automatically as it is typed — no save button needed.
   useEffect(() => {
     const normalised = normaliseName(nameInput);
