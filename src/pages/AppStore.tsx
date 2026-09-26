@@ -27,7 +27,7 @@ const appInfo = [
   { label: "Languages", value: "English" },
   { label: "Age rating", value: "4+" },
   { label: "Developer", value: "Words of Life" },
-  { label: "In-app donations", value: "Voluntary £20" },
+  { label: "In-app donations", value: "Voluntary — any amount" },
 ];
 
 const AppStorePage = () => {
@@ -173,16 +173,16 @@ const AppStorePage = () => {
         {/* Donation */}
         <section className="mt-16 rounded-3xl border border-primary/20 bg-card/70 backdrop-blur p-10 text-center shadow-soft">
           <h2 className="font-display text-3xl sm:text-4xl mb-4 text-balance">
-            Free to keep. <span className="italic gradient-text">£20</span> if it moved you.
+            Free to keep. <span className="italic gradient-text">Any amount</span> if it moved you.
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto mb-8 leading-relaxed">
-            The app costs nothing. If it has met you in a quiet moment, a voluntary £20 donation goes
-            to a good cause.
+            The app costs nothing. If it has met you in a quiet moment, a voluntary donation of any
+            amount goes to a good cause.
           </p>
           <Button asChild size="lg" className="rounded-full px-8 h-12 text-base font-medium shadow-soft">
             <Link to="/#donate">
               <Heart className="mr-2 h-4 w-4" strokeWidth={2} />
-              Donate £20
+              Donate any amount
             </Link>
           </Button>
         </section>
