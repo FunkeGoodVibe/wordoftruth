@@ -231,28 +231,13 @@ const Index = () => {
                 />
               </>
             )}
-            <motion.form
-              onSubmit={handleNameSubmit}
-              className="relative flex items-center gap-2"
-              animate={
-                name
-                  ? {}
-                  : { y: [0, -3, 0] }
-              }
+            <motion.div
+              className="relative flex items-center justify-center"
+              animate={name ? {} : { y: [0, -3, 0] }}
               transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
             >
-              <Input
-                type="text"
-                value={nameInput}
-                onChange={(e) => setNameInput(e.target.value)}
-                placeholder={name ? "Change your name" : "What shall we call you?"}
-                aria-label="Your name"
-                maxLength={40}
-                className="rounded-full bg-background/80 backdrop-blur border-primary/30 h-11 px-5 text-center sm:text-left focus-visible:ring-primary/40 focus-visible:border-primary/60 transition-all"
-              />
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                aria-hidden
                 animate={
                   name
                     ? {}
@@ -265,17 +250,19 @@ const Index = () => {
                       }
                 }
                 transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-                className="rounded-full"
+                className="rounded-full w-full max-w-[280px]"
               >
-                <Button
-                  type="submit"
-                  variant={name ? "ghost" : "default"}
-                  className="rounded-full h-11 px-5"
-                >
-                  {name ? "Update" : "Save"}
-                </Button>
+                <Input
+                  type="text"
+                  value={nameInput}
+                  onChange={(e) => setNameInput(e.target.value)}
+                  placeholder={name ? "Change your name" : "What shall we call you?"}
+                  aria-label="Your name"
+                  maxLength={40}
+                  className="rounded-full bg-background/80 backdrop-blur border-primary/30 h-11 px-5 text-center focus-visible:ring-primary/40 focus-visible:border-primary/60 transition-all"
+                />
               </motion.div>
-            </motion.form>
+            </motion.div>
           </motion.div>
 
           <div className="max-w-sm mx-auto pt-4 space-y-2 text-left">
