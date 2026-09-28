@@ -38,10 +38,6 @@
     --destructive: 0 70% 60%;
     --destructive-foreground: 35 60% 99%;
 
-    /* Opening reveal */
-    --curtain: 0 0% 2%;
-    --lightning: 0 92% 52%;
-
     --border: 280 20% 88%;
     --input: 280 20% 88%;
     --ring: 268 40% 55%;
@@ -127,64 +123,6 @@
   .bg-card-front { background: var(--gradient-card); }
   .bg-card-back { background: var(--gradient-card-back); }
   .bg-glow { background: var(--gradient-glow); }
-  .bg-curtain { background: hsl(var(--curtain)); }
-  .bg-lightning { background: hsl(var(--lightning)); }
-}
-
-.curtain-half {
-  box-shadow: inset 0 0 90px hsl(var(--foreground) / 0.13);
-  will-change: transform;
-}
-
-.curtain-half::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.22;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0,
-    transparent 8%,
-    hsl(var(--foreground) / 0.16) 10%,
-    transparent 13%
-  );
-}
-
-.curtain-left {
-  clip-path: polygon(0 0, 100% 0, 91% 8%, 98% 18%, 90% 29%, 97% 40%, 89% 51%, 98% 62%, 90% 72%, 96% 83%, 89% 92%, 100% 100%, 0 100%);
-}
-
-.curtain-right {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 11% 92%, 4% 83%, 10% 72%, 2% 62%, 11% 51%, 3% 40%, 10% 29%, 2% 18%, 9% 8%);
-}
-
-.curtain-lightning {
-  filter: drop-shadow(0 0 5px hsl(var(--lightning))) drop-shadow(0 0 18px hsl(var(--lightning) / 0.8));
-  transform-origin: top;
-  pointer-events: none;
-}
-
-.curtain-lightning-main {
-  clip-path: polygon(42% 0, 70% 0, 48% 19%, 73% 23%, 39% 44%, 67% 48%, 31% 71%, 57% 74%, 17% 100%, 35% 77%, 5% 73%, 43% 51%, 17% 46%, 51% 25%, 27% 20%);
-}
-
-.curtain-lightning-branch {
-  transform: translateX(-8%) rotate(47deg);
-  transform-origin: top left;
-  clip-path: polygon(43% 0, 66% 0, 48% 39%, 75% 43%, 21% 100%, 38% 53%, 11% 48%);
-}
-
-.curtain-flash {
-  mix-blend-mode: screen;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .curtain-half,
-  .curtain-lightning,
-  .curtain-flash {
-    display: none;
-  }
 }
 
 @keyframes float {

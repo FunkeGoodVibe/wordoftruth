@@ -10,7 +10,6 @@ import ContactSection from "@/components/ContactSection";
 import FaqSection from "@/components/FaqSection";
 import ParablesSection from "@/components/ParablesSection";
 import ListenButton from "@/components/ListenButton";
-import CurtainReveal from "@/components/CurtainReveal";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -156,7 +155,6 @@ const Index = () => {
 
   return (
     <main className="relative min-h-screen overflow-hidden">
-      <CurtainReveal />
       {/* Soft floating orbs */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute top-[10%] left-[8%] h-72 w-72 rounded-full bg-primary/20 blur-3xl animate-float" />
