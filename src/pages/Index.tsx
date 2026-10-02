@@ -10,6 +10,7 @@ import ContactSection from "@/components/ContactSection";
 import FaqSection from "@/components/FaqSection";
 import ParablesSection from "@/components/ParablesSection";
 import ListenButton from "@/components/ListenButton";
+import QuestionnairePopup from "@/components/QuestionnairePopup";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -145,6 +146,36 @@ const Index = () => {
 
   useEffect(() => {
     document.title = "Daily Affirmations — Draw Your Card";
+  }, []);
+
+  // Questionnaire pop-up: shown once the visitor has engaged.
+  const [engaged, setEngaged] = useState(false);
+  useEffect(() => {
+    if (!revealed || engaged) return;
+    const t = window.setTimeout(() => setEngaged(true), 3000);
+    return () => window.clearTimeout(t);
+  }, [revealed, engaged]);
+  useEffect(() => {
+    let timeUp = false;
+    let scrolled = false;
+    const check = () => {
+      if (timeUp && scrolled) setEngaged(true);
+    };
+    const t = window.setTimeout(() => {
+      timeUp = true;
+      check();
+    }, 60000);
+    const onScroll = () => {
+      if (window.scrollY > window.innerHeight) {
+        scrolled = true;
+        check();
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const today = new Date().toLocaleDateString(undefined, {
@@ -390,6 +421,7 @@ const Index = () => {
       <DonateSection />
       <ContactSection />
       <FaqSection />
+      <QuestionnairePopup engaged={engaged} name={name} />
 
       {/* Footer */}
       <footer className="relative z-10 px-6 pb-10 text-center">
