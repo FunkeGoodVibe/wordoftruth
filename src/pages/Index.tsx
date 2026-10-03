@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Shuffle, Sparkles } from "lucide-react";
+import { Instagram, Shuffle, Sparkles } from "lucide-react";
 import AffirmationCard from "@/components/AffirmationCard";
 import ImpactSection from "@/components/ImpactSection";
 import PromisesLibrary from "@/components/PromisesLibrary";
@@ -424,10 +424,20 @@ const Index = () => {
       <QuestionnairePopup engaged={engaged} name={name} />
 
       {/* Footer */}
-      <footer className="relative z-10 px-6 pb-10 text-center">
+      <footer className="relative z-10 px-6 pb-10 text-center space-y-4">
         <p className="font-display italic text-sm text-muted-foreground">
           made with quiet intention
         </p>
+        <a
+          href="https://www.instagram.com/wordsoflifeaffirmation"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Words of Life on Instagram"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+        >
+          <Instagram className="h-4 w-4" strokeWidth={1.8} />
+          <span>Follow us on Instagram</span>
+        </a>
       </footer>
     </main>
   );
