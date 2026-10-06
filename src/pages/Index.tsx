@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Instagram, Shuffle, Sparkles } from "lucide-react";
+import { ClipboardList, Instagram, Shuffle, Sparkles } from "lucide-react";
 import AffirmationCard from "@/components/AffirmationCard";
 import ImpactSection from "@/components/ImpactSection";
 import PromisesLibrary from "@/components/PromisesLibrary";
@@ -428,16 +428,28 @@ const Index = () => {
         <p className="font-display italic text-sm text-muted-foreground">
           made with quiet intention
         </p>
-        <a
-          href="https://www.instagram.com/wordsoflifeaffirmation"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Words of Life on Instagram"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
-        >
-          <Instagram className="h-4 w-4" strokeWidth={1.8} />
-          <span>Follow us on Instagram</span>
-        </a>
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          <a
+            href="https://www.instagram.com/wordsoflifeaffirmation"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Words of Life on Instagram"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+          >
+            <Instagram className="h-4 w-4" strokeWidth={1.8} />
+            <span>Follow us on Instagram</span>
+          </a>
+          <a
+            href="https://form.jotform.com/262603912130345"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Words of Life questionnaire"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+          >
+            <ClipboardList className="h-4 w-4" strokeWidth={1.8} />
+            <span>Take the questionnaire</span>
+          </a>
+        </div>
       </footer>
     </main>
   );
